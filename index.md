@@ -6,32 +6,14 @@ permalink: /
 ---
 <div class="not-prose grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
   <div class="space-y-6">
-    <p class="text-lg text-slate-600">PhD Student · Department of Chemical Engineering · IIT Delhi</p>
-    <h2 class="text-4xl font-semibold text-brand">Hi, I'm Krishna Patel.</h2>
+    <p class="text-sm font-semibold uppercase tracking-widest text-muted">PhD Student · Department of Chemical Engineering · IIT Delhi</p>
+    <h1 class="text-4xl font-semibold text-brand">Hi, I'm Krishna Patel.</h1>
     <p class="text-slate-700">
-      I work with computational molecular dynamics to understand how carbonaceous materials behave in complex environments.
-      My current focus spans polymer–solvent interactions, adsorption energetics, and workflow automation for large-scale simulations.
+      I use molecular dynamics to study how carbon-based materials respond to different solvents, loads, and gas adsorption scenarios.
+      My current work blends adsorption energetics, workflow automation, and detailed analysis of graphene- and polymer-rich systems.
     </p>
-    <dl class="grid gap-4 text-sm sm:grid-cols-2">
-      <div>
-        <dt class="font-semibold uppercase tracking-wide text-muted">Advisor</dt>
-        <dd>Prof. Jayati Sarkar</dd>
-      </div>
-      <div>
-        <dt class="font-semibold uppercase tracking-wide text-muted">Location</dt>
-        <dd>Delhi, India</dd>
-      </div>
-      <div>
-        <dt class="font-semibold uppercase tracking-wide text-muted">Email</dt>
-        <dd><a class="text-accent hover:underline" href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
-      </div>
-      <div>
-        <dt class="font-semibold uppercase tracking-wide text-muted">GitHub</dt>
-        <dd><a class="text-accent hover:underline" href="https://github.com/crisnapatel">github.com/crisnapatel</a></dd>
-      </div>
-    </dl>
     <div class="flex flex-wrap gap-3">
-      <a class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/assets/docs/krishna-patel-cv.pdf' | relative_url }}">
+      <a class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/assets/cv.pdf' | relative_url }}">
         Download CV
       </a>
       <a class="inline-flex items-center gap-2 rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10 focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/contact/' | relative_url }}">

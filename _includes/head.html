@@ -1,19 +1,23 @@
+{% assign page_meta_title = page.meta.title | default: page.title %}
+{% assign head_title = page_meta_title | default: site.title %}
+{% assign meta_description = page.meta.description | default: page.description | default: site.description %}
+{% assign meta_image = page.meta.image | default: '/assets/images/krishna-patel.jpg' %}
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<title>{{ head_title }} · {{ site.title }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="{{ page.description | default: site.description }}" />
+<meta name="description" content="{{ meta_description }}" />
 <meta name="author" content="{{ site.name }}" />
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}" />
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}" />
-<meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}" />
-<meta property="og:description" content="{{ page.description | default: site.description }}" />
+<meta property="og:title" content="{{ head_title }} · {{ site.title }}" />
+<meta property="og:description" content="{{ meta_description }}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
-<meta property="og:image" content="{{ '/assets/images/krishna-patel.jpg' | absolute_url }}" />
+<meta property="og:image" content="{{ meta_image | absolute_url }}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}" />
-<meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+<meta name="twitter:title" content="{{ head_title }} · {{ site.title }}" />
+<meta name="twitter:description" content="{{ meta_description }}" />
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 <script>
   tailwind.config = {
@@ -56,4 +60,31 @@
     z-index: 1000;
   }
 </style>
+{% if site.person %}
+  {% assign person = site.person %}
+  {% assign same_as_links = person.same_as | where_exp: 'link', 'link contains "http"' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ person.name }}",
+      "alternateName": "{{ person.preferred_name }}",
+      "jobTitle": "{{ person.job_title }}",
+      "email": "mailto:{{ person.email }}",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "{{ person.affiliation }}"
+      },
+      "image": "{{ person.image | absolute_url }}",
+      "url": "{{ site.url | append: site.baseurl }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ person.location }}",
+        "addressCountry": "India"
+      }{% if same_as_links and same_as_links != empty %},
+      "sameAs": [{% for link in same_as_links %}"{{ link }}"{% if forloop.last == false %}, {% endif %}{% endfor %}]
+      {% endif %}
+    }
+  </script>
+{% endif %}
 {% if page.extra_head %}{{ page.extra_head }}{% endif %}
