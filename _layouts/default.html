@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="bg-slate-50 font-sans text-base text-slate-900">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    {% include header.html %}
+    <main id="main-content" class="mx-auto flex min-h-[60vh] w-full max-w-5xl flex-col gap-12 px-4 py-12 sm:px-6 lg:px-8">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.querySelector('[data-toggle="nav"]');
+        const primaryNav = document.getElementById('primary-navigation');
+        const mobileNav = document.getElementById('mobile-navigation');
+        if (!toggleButton || !primaryNav || !mobileNav) return;
+
+        const closeMobileNav = () => {
+          mobileNav.classList.add('hidden');
+          toggleButton.setAttribute('aria-expanded', 'false');
+        };
+
+        toggleButton.addEventListener('click', () => {
+          const isHidden = mobileNav.classList.toggle('hidden');
+          const expanded = !isHidden;
+          toggleButton.setAttribute('aria-expanded', String(expanded));
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 1024) {
+            primaryNav.classList.remove('hidden');
+            closeMobileNav();
+          } else {
+            primaryNav.classList.add('hidden');
+          }
+        });
+
+        primaryNav.classList.toggle('hidden', window.innerWidth < 1024);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+title: "Krishna Patel — Molecular simulations"
+name: "Krishna Kumar Patel"
+preferred_name: "Krishna Patel"
+email: "chz218339@iitd.ac.in"
+role_line: "PhD Student · Department of Chemical Engineering · IIT Delhi"
+location: "Delhi, India"
+description: >-
+  Krishna Patel is a PhD candidate in Chemical Engineering at IIT Delhi focusing on molecular
+  dynamics of carbonaceous materials, polymer–solvent interactions, and hydrogen storage.
+url: "https://crisnapatel.github.io"
+baseurl: "/crisnapatel"
+permalink: pretty
+markdown: kramdown
+kramdown:
+  input: GFM
+theme: null
+plugins: []
+social:
+  linkedin: "https://www.linkedin.com/in/krishna-iitd"
+  twitter: "<<add twitter profile>>"
+  github: "https://github.com/crisnapatel"
+  google_scholar: "<<add google scholar profile>>"
+  orcid: "<<add orcid iD>>"
+person:
+  name: "Krishna Kumar Patel"
+  preferred_name: "Krishna Patel"
+  job_title: "PhD Student"
+  affiliation: "Department of Chemical Engineering, Indian Institute of Technology Delhi"
+  email: "chz218339@iitd.ac.in"
+  location: "Delhi, India"
+  image: "/assets/images/krishna-patel.jpg"
+  same_as:
+    - "https://github.com/crisnapatel"
+    - "https://www.linkedin.com/in/krishna-iitd"
+    - "<<add google scholar profile>>"
+    - "<<add orcid iD>>"
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+collections:
+  posts:
+    output: true
+exclude:
+  - README.md
+  - node_modules
+  - vendor
+  - Gemfile.lock
+  - .bundle
+  - tmp
+  - scripts
