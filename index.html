@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna - Soft Matter Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-900 text-white py-4 fixed top-0 w-full">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="https://web.iitd.ac.in/~jayati/index.html" class="shadow-xl">Soft Matter Lab</a>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://web.iitd.ac.in/~jayati/index.html" class="transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-110 rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Home</a>
+                <a href="https://web.iitd.ac.in/~jayati/Research.html" class="transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-110 rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Research</a>
+                <a href="https://web.iitd.ac.in/~jayati/team.html" class="transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-110 rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">The Team</a>
+                <a href="https://web.iitd.ac.in/~jayati/publications.html" class="transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-110 rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Publications</a>
+                <a href="https://web.iitd.ac.in/~jayati/teaching.html" class="transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-110 border-indigo-500 rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Teaching</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 border rounded hover:bg-blue-700 hover:text-white">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            </button>
+        </div>
+        <div id="menu" class="hidden md:hidden container mx-auto flex flex-col space-y-4 mt-4">
+            <a href="https://web.iitd.ac.in/~jayati/index.html" class="rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Home</a>
+            <a href="https://web.iitd.ac.in/~jayati/Research.html" class="rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Research</a>
+            <a href="https://web.iitd.ac.in/~jayati/team.html" class="rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">The Team</a>
+            <a href="https://web.iitd.ac.in/~jayati/publications.html" class="rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Publications</a>
+            <a href="https://web.iitd.ac.in/~jayati/teaching.html" class="rounded-full p-1 px-4 hover:bg-blue-700 hover:text-white">Teaching</a>
+        </div>
+    </nav>
 
+    <main class="container mx-auto px-4 pt-16">
+        <!-- Student's Name -->
+        <section class="my-5 flex items-center">
+            <img src="images/Krishna.JPG" alt="Krishna" class="w-32 h-32 rounded-full">
+            <div class="ml-5">
+                <h2 class="text-2xl font-semibold">Krishna Patel</h2>
+                <p>PhD Student at Soft Matter Lab</p>
+                <p>Department of Chemical Engineering, IIT Delhi</p>
+                <a href="mailto:chz218339@iitd.ac.in" class="text-blue-900 hover:underline">chz218339@iitd.ac.in</a>
+            </div>
+        </section>
+
+            <!-- Research Interests -->
+            <section class="my-5">
+                <h2 class="text-2xl font-semibold">Research Interests</h2>
+                <p class="mt-2 text-justify">
+                    My research interests are both broad and specialized, primarily focusing on computational studies of soft matter systems. Currently, I am on the verge of completing a project on the dynamics of polystyrene oligomers in the presence of graphene in a toluene solvent.
+                </p>
+                <p class="mt-2 text-justify">
+                    I am also excited about exploring other areas such as CO₂ adsorption in nanoporous materials and hydrogen adsorption in various nanostructures, including modified or decorated carbon nanotubes and graphene. My interests further extend to nano confinement, nano materials, and polymer nano composites.
+                </p>
+            </section>
+        </section>
+
+        <!-- Current Projects -->
+        <section class="my-5">
+            <h2 class="text-2xl font-semibold">Current Projects</h2>
+            <ul role="list" class="marker:text-blue-900 list-disc pl-5 space-y-3 mt-2">
+                <li>Dynamics of polystyrene oligomer in presence of graphene sheet in toluene solvent.</li>
+                <li>Hydrogen storage study in modified carbon nano-tubes.</li>
+            </ul>
+        </section>
+
+        <section class="my-5">
+            <h2 class="text-2xl font-semibold">Scholarships</h2>
+            <ul role="list" class="marker:text-blue-900 list-disc pl-5 space-y-3 mt-2">
+                <li>Awarded scholarship for Schrödinger's Molecular Modeling for Materials Science Applications: Organic Electronics course, October 2023 session.</li>
+            </ul>
+        </section>
+
+        
+        
+        <!-- Conferences 
+        <section class="my-5">
+            <h2 class="text-2xl font-semibold">Conferences Attended</h2>
+            <ul class="list-disc list-inside mt-2">
+                <li>Conference 1</li>
+                <li>Conference 2</li>
+            </ul>
+        </section>
+        -->
+
+        <!-- Software -->
+        <section class="my-5">
+            <h2 class="text-2xl font-semibold">Software and Programming languages</h2>
+            <p class="mt-2"><b>C, tcl scripting, python,</b> and <b>MATLAB</b> for computational modeling.</p>
+            <p class="mt-2"><b>NAMD, GROMACS,  LAMMPS, Materials Studio</b> for performing molecular dynamics simulation.</p>
+            <p class="mt-2"><b>VMD, OVITO</b> molecular dynamics trajectory analysis tools.</p>
+        </section>
+
+        <section class="my-5">
+            <h2 class="text-2xl font-semibold">Code Repositories</h2>
+            <p class="mt-2">Below you can find the simulation codes I've developed or contributed to. Click on a repository to explore its contents.</p>
+            <ul role="list" class="marker:text-blue-900 list-disc pl-5 space-y-3 mt-2">
+                <li><a href="convenience_codes.html" class="text-blue-900 hover:underline">Convenience Codes</a></li>
+                <li><a href="md_related_codes.html" class="text-blue-900 hover:underline">MD-related Codes</a></li>
+            </ul>            
+            <div id="codeList"></div>
+        </section>
+        
+        
+
+        <section id="simulation-video" class="my-5">
+            <h2 class="text-2xl font-semibold">Simulation Videos</h2>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="m-4 flex justify-center">
+                    <iframe class="aspect-auto hover:aspect-auto" src="https://www.youtube.com/embed/fpwTIRiNZPM" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="m-4 flex justify-center">
+                    <iframe class="aspect-auto hover:aspect-auto" src="https://www.youtube.com/embed/PH6x7Yvc-fg" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Add more videos here -->
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold">Relevant videos</h2>
+                <ol role="list" class="marker:text-blue-900 list-decimal pl-5 space-y-3 mt-2">
+                    <li>
+                        <a class="text-blue-900 hover:underline" href="https://www.youtube.com/watch?v=5_pOYPyPKWU&list=PLxvbTrJqiiJsdH6e6i3QUj372jplL3YU1">
+                            Get your HPC account at IITD
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-blue-900 hover:underline" href="https://www.youtube.com/watch?v=ZyO-2vpME0k">
+                             Kickstart your work with HPC at IIT Delhi
+                        </a>
+                    </li> 
+                    <li>
+                        <a class="text-blue-900 hover:underline" href="https://www.youtube.com/watch?v=wRyo6tbqIAg">
+                            Introduction to Molecular Dynamics with Materials Studio & LAMMPS
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-blue-900 hover:underline" href="https://www.youtube.com/watch?v=vr6zxvs8qHc">
+                            Materials Studio: Molecular Dynamics - Density vs Temperature Plot (glass transition temperature)
+                        </a>
+                    </li>                   
+                </ol>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-5 text-center">
+        <p>Soft Matter Lab, IIT Delhi.</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+
+            menuToggle.addEventListener("click", function() {
+                menu.classList.toggle("hidden");
+            });
+        });
+    </script>
+</body>
+</html>

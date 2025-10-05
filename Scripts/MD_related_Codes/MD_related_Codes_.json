@@ -1,0 +1,12 @@
+[
+    {
+        "name": "file1",
+        "description": "File's description",
+        "path": "Scripts/MD_related/file1.py"
+    },
+    {
+        "name": "file2",
+        "description": "File's description",
+        "path": "Scripts/MD_related/file2.py"
+    }
+]
