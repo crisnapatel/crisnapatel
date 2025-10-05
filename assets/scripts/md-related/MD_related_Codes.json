@@ -2,11 +2,11 @@
     {
         "name": "xtc_convert_to_dcd.py",
         "description": "This script utilizes the MDTraj library to convert trajectory files from XTC to DCD format. It can process entire trajectories or specific subsets. Before running, install MDTraj and ensure you have the .xtc source file and corresponding topology file (like .gro or .pdb). Run the script in an environment with access to the necessary files. Be cautious as modifications to the script may be required to match the specific atom indices or selection strings for your system. Always verify the output DCD for consistency with the input data.",
-        "path": "Scripts/Convenience_Codes/xtc_convert_to_dcd.py"
+        "path": "assets/scripts/convenience/xtc_convert_to_dcd.py"
     },
     {
         "name": "plot_lammps_log_file.py",
         "description": "This script visualizes data from LAMMPS log files, plotting various thermodynamic properties recorded during simulations. Before running, ensure Matplotlib is installed in your Python environment. To use, pass the path of the LAMMPS log file as an argument to the script. It is advisable to review the log file format as this script expects a standard LAMMPS output. Use this tool to quickly assess the convergence and stability of your molecular dynamics simulations.",
-        "path": "Scripts/Convenience_Codes/plot_lammps_log_file.py"
+        "path": "assets/scripts/convenience/plot_lammps_log_file.py"
     }
 ]
