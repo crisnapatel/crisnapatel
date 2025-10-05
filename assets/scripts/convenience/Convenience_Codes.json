@@ -2,11 +2,11 @@
     {
         "name": "RenamePDF.py",
         "description": "This script automatically renames all PDF files in the current directory using titles from their metadata. Ensure you backup your files before running the script, as the renaming process is irreversible and may not always reflect the document's content accurately. To use the script, run it in a directory containing only the PDFs you intend to rename. It requires Python and the PyPDF2 library installed in your environment.",
-        "path": "Scripts/Convenience_Codes/RenamePDF.py"
+        "path": "assets/scripts/convenience/RenamePDF.py"
     },
     {
         "name": "gpu_usage.py",
         "description": "This script monitors and logs GPU usage over time, relying on 'nvidia-smi' for data gathering. It's essential to have NVIDIA drivers and related software installed. Run the script in an environment where you have permissions to query system hardware. Note that continuous monitoring may slightly impact system performance. The script uses Pandas for data handling and Matplotlib for optional visualization, so ensure these libraries are installed before execution.",
-        "path": "Scripts/Convenience_Codes/gpu_usage.py"
+        "path": "assets/scripts/convenience/gpu_usage.py"
     }
 ]
