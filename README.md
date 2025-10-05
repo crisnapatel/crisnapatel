@@ -41,8 +41,24 @@ _data/navigation  Single source of truth for navigation links
 assets/images/    Portrait, favicon, and other imagery
 assets/docs/      CV placeholder (PDF) and downloadable files
 assets/scripts/   Convenience and MD-related helper scripts from the legacy site
+assets/js/        Client-side enhancements (e.g., contact form submission helper)
 pages/            Standalone pages (Research, Publications, CV, Contact)
 ```
+
+## Contact form integration
+
+### Formspree (default setup)
+1. Visit [Formspree](https://formspree.io/) and create a new form to obtain your form ID.
+2. In `pages/contact.md`, replace `<YOUR_FORM_ID>` in the `action="https://formspree.io/f/<YOUR_FORM_ID>"` attribute with your actual ID.
+3. Deploy the site. When JavaScript is available, `assets/js/contact-form.js` intercepts the submission, sends it via `fetch`, and shows an inline confirmation. Without JavaScript the browser falls back to a standard POST request (Formspree will send you a confirmation email).
+
+### Netlify Forms (optional alternative)
+1. Remove the Formspree action or set it to an empty string (`action=""`).
+2. Add the `data-netlify="true" netlify-honeypot="bot-field"` attributes to the `<form>` tag as noted in the inline comment.
+3. Uncomment the hidden `<input type="hidden" name="form-name" value="contact" />` field so Netlify recognises the form at build time.
+4. (Optional) Keep the JavaScript enhancement; it automatically disables itself when the `action` no longer targets Formspree, allowing Netlify to handle the submission natively.
+
+Both approaches include an accessible inline success/error state and a mailto fallback (`mailto:{{ site.person.email }}`) for visitors who prefer emailing directly.
 
 ## Accessibility & performance
 - Semantic HTML structure with accessible navigation and skip links.

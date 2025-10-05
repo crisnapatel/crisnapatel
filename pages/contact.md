@@ -15,19 +15,26 @@ meta:
       <p class="mt-2 text-sm text-slate-600">
         I respond to most messages within two working days. Share your research context and any specific questions so I can prepare resources in advance.
       </p>
-      <!-- To enable hosted forms, replace the action with your Formspree endpoint or leave it blank for Netlify processing.
-           Remove the data-demo attribute once a backend is configured. -->
+      <!-- Replace <YOUR_FORM_ID> in the action URL with your Formspree form ID. -->
       <form
         id="contact-form"
         name="contact"
         method="POST"
-        action="mailto:chz218339@iitd.ac.in"
-        enctype="text/plain"
-        data-netlify="true"
-        data-demo="true"
+        action="https://formspree.io/f/<YOUR_FORM_ID>"
         class="mt-6 space-y-5"
+        data-fallback-email="{{ site.person.email }}"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <!-- Netlify Forms: add data-netlify="true" netlify-honeypot="bot-field" to this form and uncomment the hidden form-name field below. -->
+        <!-- <input type="hidden" name="form-name" value="contact" /> -->
+        <input type="hidden" name="_subject" value="Website message from {{ site.person.name }}" />
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          class="hidden"
+          aria-hidden="true"
+        />
         <div>
           <label class="block text-sm font-semibold text-brand" for="contact-name">Name</label>
           <input
@@ -71,8 +78,28 @@ meta:
           </svg>
           Submit
         </button>
-        <p id="contact-success" class="hidden rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700" role="status">
-          Thank you for reaching out! Your message was noted—I'll reply soon.
+        <noscript>
+          <p class="rounded-xl bg-slate-100 px-4 py-3 text-sm text-slate-700">
+            JavaScript is disabled. You can <a class="font-semibold text-accent hover:underline" href="mailto:{{ site.person.email }}?subject=Website%20message%20from%20your%20site&amp;body=Hi%20Krishna%2C%0A%0A">email me directly</a> instead.
+          </p>
+        </noscript>
+        <p
+          id="contact-success"
+          class="hidden rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+        >
+          Thank you for reaching out! Your message was sent successfully.
+        </p>
+        <p
+          id="contact-error"
+          class="hidden rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+        >
+          There was an issue sending your message. Please try again or use the email fallback.
         </p>
       </form>
       <p class="mt-4 text-sm text-slate-600">
@@ -201,24 +228,4 @@ meta:
   </section>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('contact-success');
-    if (!form || !success) return;
-
-    form.addEventListener('submit', function (event) {
-      if (!form.reportValidity()) {
-        event.preventDefault();
-        return;
-      }
-
-      if (form.dataset.demo === 'true') {
-        event.preventDefault();
-        form.reset();
-        success.classList.remove('hidden');
-        success.focus?.();
-      }
-    });
-  });
-</script>
+<script src="{{ '/assets/js/contact-form.js' | relative_url }}" defer></script>
