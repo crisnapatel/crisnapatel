@@ -1,0 +1,90 @@
+{% assign page_meta_title = page.meta.title | default: page.title %}
+{% assign head_title = page_meta_title | default: site.title %}
+{% assign meta_description = page.meta.description | default: page.description | default: site.description %}
+{% assign meta_image = page.meta.image | default: '/assets/images/krishna-patel.jpg' %}
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>{{ head_title }} · {{ site.title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="{{ meta_description }}" />
+<meta name="author" content="{{ site.name }}" />
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}" />
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}" />
+<meta property="og:title" content="{{ head_title }} · {{ site.title }}" />
+<meta property="og:description" content="{{ meta_description }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+<meta property="og:image" content="{{ meta_image | absolute_url }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ head_title }} · {{ site.title }}" />
+<meta name="twitter:description" content="{{ meta_description }}" />
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: '#0f172a',
+          accent: '#1e40af',
+          muted: '#64748b'
+        },
+        fontFamily: {
+          sans: ['"Source Sans 3"', 'ui-sans-serif', 'system-ui']
+        }
+      }
+    }
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    z-index: 1000;
+  }
+</style>
+{% if site.person %}
+  {% assign person = site.person %}
+  {% assign same_as_links = person.same_as | where_exp: 'link', 'link contains "http"' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ person.name }}",
+      "alternateName": "{{ person.preferred_name }}",
+      "jobTitle": "{{ person.job_title }}",
+      "email": "mailto:{{ person.email }}",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "{{ person.affiliation }}"
+      },
+      "image": "{{ person.image | absolute_url }}",
+      "url": "{{ site.url | append: site.baseurl }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ person.location }}",
+        "addressCountry": "India"
+      }{% if same_as_links and same_as_links != empty %},
+      "sameAs": [{% for link in same_as_links %}"{{ link }}"{% if forloop.last == false %}, {% endif %}{% endfor %}]
+      {% endif %}
+    }
+  </script>
+{% endif %}
+{% if page.extra_head %}{{ page.extra_head }}{% endif %}

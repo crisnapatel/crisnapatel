@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="prose prose-slate max-w-none prose-a:text-accent hover:prose-a:text-brand">
+  {% if page.title %}
+    <header class="not-prose mb-8">
+      <h1 class="text-3xl font-semibold text-brand sm:text-4xl">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="mt-2 text-lg text-slate-600">{{ page.subtitle }}</p>
+      {% endif %}
+    </header>
+  {% endif %}
+  {{ content }}
+</article>
