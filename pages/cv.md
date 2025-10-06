@@ -61,7 +61,7 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Doctor of Philosophy (PhD), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">Indian Institute of Technology Delhi, India</p>
-          <p class="text-sm text-slate-600">Advisor: Prof. Jayati Sarkar</p>
+          <p class="text-sm text-slate-600">Thesis Advisor: Prof. Jayati Sarkar</p>
           <p class="text-sm text-slate-600">Focus: nanoscale simulations, hydrogen storage, carbonaceous materials.</p>
         </div>
       </li>
@@ -70,6 +70,7 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Master of Technology (M.Tech), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">National Institute of Technology Warangal, India</p>
+          <p class="text-sm text-slate-600">Thesis Advisor: Prof. Praveen Kumar Bommineni</p>
           <p class="text-sm text-slate-600">CGPA: 7.4/10 </p>
           <p class="text-sm text-slate-600">Event-Driven Molecular Dynamics Simulation of Self Assembly of Binary Hard Disks.</p>
         </div>
