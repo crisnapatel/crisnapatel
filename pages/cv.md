@@ -70,7 +70,7 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Master of Technology (M.Tech), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">National Institute of Technology Warangal, India</p>
-          <p class="text-sm text-slate-600">CGPA: 7.4 </p>
+          <p class="text-sm text-slate-600">CGPA: 7.4/10 </p>
           <p class="text-sm text-slate-600">Event-Driven Molecular Dynamics Simulation of Self Assembly of Binary Hard Disks.</p>
         </div>
       </li>
@@ -79,11 +79,36 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Bachelor of Technology (B.Tech), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">Guru Ghasidas University, Bilaspur, India</p>
-          <p class="text-sm text-slate-600">CGPA: 8.4 </p>
+          <p class="text-sm text-slate-600">CGPA: 8.4/10 </p>
           <p class="text-sm text-slate-600">BTP: Reactive extraction of Gallic acid with Tri-n-Butyl Phosphate using rice bran oil and n-Butanol as diluents.</p>
         </div>
       </li>
     </ol>
   </section>
+
+<section class="mt-12 grid gap-6 md:grid-cols-2">
+  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h3 class="text-xl font-semibold text-brand border-b pb-2">Research Skills</h3>
+    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
+      <li>Classical atomistic molecular dynamics</li>
+      <li>Reactive and empirical force fields (ReaxFF, AIREBO, COMPASS)</li>
+      <li>Grand canonical Monte Carlo (fix gcmc) and adsorption workflows</li>
+      <li>Polymer chain metrics and transport: R<sub>g</sub>, end-to-end, MSD, diffusivity</li>
+      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics</li>
+      </ul>
+  </div>
+
+  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
+    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
+      <li>OS: Linux, macOS, Windows</li>
+      <li>Simulation software: LAMMPS, Materials Studio, GROMACS, NAMD</li>
+      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, Matplotlib</li>
+      <li>Programming: Python (NumPy, pandas), Bash; C++</li>
+      <li>ML &amp; potentials: PyTorch, DeepMD-kit, training/validation pipelines</li>
+      </ul>
+  </div>
+</section>
+
 
 </div>
