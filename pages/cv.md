@@ -61,7 +61,7 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Doctor of Philosophy (PhD), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">Indian Institute of Technology Delhi, India</p>
-          <p class="text-sm text-slate-600">Advisor: Prof. Jayati Sarkar</p>
+          <p class="text-sm text-slate-600">Thesis Advisor: Prof. Jayati Sarkar</p>
           <p class="text-sm text-slate-600">Focus: nanoscale simulations, hydrogen storage, carbonaceous materials.</p>
         </div>
       </li>
@@ -70,8 +70,9 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Master of Technology (M.Tech), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">National Institute of Technology Warangal, India</p>
-          <p class="text-sm text-slate-600">CGPA: <<add CGPA>></p>
-          <p class="text-sm text-slate-600">Research emphasis on computational thermodynamics and advanced process modelling.</p>
+          <p class="text-sm text-slate-600">Thesis Advisor: Prof. Praveen Kumar Bommineni</p>
+          <p class="text-sm text-slate-600">CGPA: 7.4/10 </p>
+          <p class="text-sm text-slate-600">Event-Driven Molecular Dynamics Simulation of Self Assembly of Binary Hard Disks.</p>
         </div>
       </li>
       <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
@@ -79,107 +80,36 @@ extra_head: |
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Bachelor of Technology (B.Tech), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">Guru Ghasidas University, Bilaspur, India</p>
-          <p class="text-sm text-slate-600">CGPA: <<add CGPA>></p>
-          <p class="text-sm text-slate-600">Capstone: adsorption and transport studies in carbon-based porous media.</p>
+          <p class="text-sm text-slate-600">CGPA: 8.4/10 </p>
+          <p class="text-sm text-slate-600">BTP: Reactive extraction of Gallic acid with Tri-n-Butyl Phosphate using rice bran oil and n-Butanol as diluents.</p>
         </div>
       </li>
     </ol>
   </section>
 
-  <section>
-    <h2 class="text-2xl font-semibold text-brand">Scholarships &amp; Awards</h2>
-    <ul class="mt-4 space-y-3">
-      <li class="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">
-        <span class="font-semibold text-brand">Institute PhD Fellowship, IIT Delhi</span>
-        <span class="text-muted">2021 – Present</span>
-      </li>
-      <li class="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">
-        <span class="font-semibold text-brand">Graduate Assistantship, NIT Warangal</span>
-        <span class="text-muted">2019 – 2021</span>
-      </li>
-      <li class="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">
-        <span class="font-semibold text-brand"><<add award or recognition>></span>
-        <span class="text-muted"><<add year>></span>
-      </li>
-    </ul>
-  </section>
+<section class="mt-12 grid gap-6 md:grid-cols-2">
+  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h3 class="text-xl font-semibold text-brand border-b pb-2">Research Skills</h3>
+    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
+      <li>Classical atomistic molecular dynamics</li>
+      <li>Reactive and empirical force fields (ReaxFF, AIREBO, COMPASS)</li>
+      <li>Grand canonical Monte Carlo (fix gcmc) and adsorption workflows</li>
+      <li>Polymer chain metrics and transport: R<sub>g</sub>, end-to-end, MSD, diffusivity</li>
+      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics</li>
+      </ul>
+  </div>
 
-  <section>
-    <h2 class="text-2xl font-semibold text-brand">Research Experience &amp; Projects</h2>
-    <div class="mt-4 space-y-4">
-      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Hydrogen storage on modified graphene and CNTs</h3>
-        <p class="mt-2 text-sm text-slate-600">
-          Conducted grand canonical Monte Carlo and molecular dynamics simulations to quantify adsorption energetics, coverage profiles, and gravimetric capacity for oxidized and metal-decorated carbon substrates.
-        </p>
-      </article>
-      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Polystyrene oligomers in toluene with graphene interfaces</h3>
-        <p class="mt-2 text-sm text-slate-600">
-          Analysed chain conformation metrics, diffusivity, and ensemble differences using GPU-accelerated LAMMPS workflows and automated post-processing in Python.
-        </p>
-      </article>
-      <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Research-assistant tooling for HPC clusters</h3>
-        <p class="mt-2 text-sm text-slate-600">
-          Built reproducible LAMMPS deployments (MPI/CUDA), log parsers, and retrieval-augmented notebooks to streamline analysis for collaborative research teams.
-        </p>
-      </article>
-    </div>
-  </section>
+  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
+    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
+      <li>OS: Linux, macOS, Windows</li>
+      <li>Simulation software: LAMMPS, Materials Studio, GROMACS, NAMD</li>
+      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, Matplotlib</li>
+      <li>Programming: Python (NumPy, pandas), Bash; C++</li>
+      <li>ML &amp; potentials: PyTorch, DeepMD-kit, training/validation pipelines</li>
+      </ul>
+  </div>
+</section>
 
-  <section>
-    <h2 class="text-2xl font-semibold text-brand">Research Skills</h2>
-    <ul class="mt-4 grid gap-3 md:grid-cols-2">
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Molecular dynamics simulations of polymers and carbon materials</li>
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Hydrogen adsorption and storage modelling on graphene/CNTs</li>
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Force-field validation (ReaxFF, AIREBO) and stress–strain analysis</li>
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Adsorption energetics, gravimetric and volumetric capacity calculations</li>
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Workflow automation for large-scale LAMMPS studies</li>
-      <li class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Data curation and visualization for simulation outputs</li>
-    </ul>
-  </section>
 
-  <section>
-    <h2 class="text-2xl font-semibold text-brand">Technical Skills</h2>
-    <div class="mt-4 grid gap-6 md:grid-cols-2">
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Simulation Platforms</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li>LAMMPS, GROMACS, NAMD</li>
-          <li>Grand canonical Monte Carlo toolkits</li>
-        </ul>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Analysis &amp; Visualization</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li>MDAnalysis, MDTraj, OVITO, VMD</li>
-          <li>Python (pandas, numpy, matplotlib)</li>
-        </ul>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">Force Fields &amp; Modelling</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li>ReaxFF, AIREBO, COMPASS (Materials Studio)</li>
-          <li>SAMSON, moltemplate, plumed</li>
-        </ul>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 class="text-lg font-semibold text-brand">DevOps &amp; Platforms</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li>Conda, Docker, GitHub Pages, Jekyll</li>
-          <li>HPC builds (MPI/CUDA), local LLM tooling (llama.cpp, RAGFlow)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-2xl font-semibold text-brand">Teaching &amp; Outreach</h2>
-    <div class="mt-4 space-y-3">
-      <p class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Teaching Assistant for CLL113 (Numerical Methods) — tutorials, lab coordination, and coding examples.</p>
-      <p class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">YouTube channel: <a class="text-accent hover:underline" href="https://www.youtube.com/@NanoscaleModeling" target="_blank" rel="noopener">NanoscaleModeling</a> — molecular dynamics tutorials.</p>
-      <p class="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 shadow-sm">Projects: StudentsSpeak/PeerNet (Django), research code and LAMMPS tooling on <a class="text-accent hover:underline" href="https://github.com/crisnapatel" target="_blank" rel="noopener">GitHub</a>.</p>
-    </div>
-  </section>
 </div>
