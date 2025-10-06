@@ -19,6 +19,7 @@ social:
   linkedin: "https://www.linkedin.com/in/krishna-iitd"
   twitter: "<<add twitter profile>>"
   github: "https://github.com/crisnapatel"
+  youtube: "https://www.youtube.com/@KrishnaSoftMatterLab"
   google_scholar: "<<add google scholar profile>>"
   orcid: "<<add orcid iD>>"
 person:
@@ -32,6 +33,7 @@ person:
   same_as:
     - "https://github.com/crisnapatel"
     - "https://www.linkedin.com/in/krishna-iitd"
+    - "https://www.youtube.com/@KrishnaSoftMatterLab"
     - "<<add google scholar profile>>"
     - "<<add orcid iD>>"
 defaults:

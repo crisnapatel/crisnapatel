@@ -209,6 +209,27 @@ meta:
         {% endunless %}
       {% endif %}
 
+      {% assign youtube = site.social.youtube %}
+      {% if youtube and youtube != '' %}
+        {% unless youtube contains '<<' %}
+          {% assign has_social = 'true' %}
+          <div class="flex flex-col items-center gap-2">
+            <a
+              class="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white transition hover:bg-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              href="{{ youtube }}"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="sr-only">YouTube</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M21.6 7.2a2.4 2.4 0 00-1.69-1.695C18.285 5.25 12 5.25 12 5.25s-6.285 0-7.91.255A2.4 2.4 0 002.4 7.2 25.42 25.42 0 002.25 12a25.42 25.42 0 00.15 4.8 2.4 2.4 0 001.69 1.695C5.715 18.75 12 18.75 12 18.75s6.285 0 7.91-.255a2.4 2.4 0 001.69-1.695A25.42 25.42 0 0021.75 12a25.42 25.42 0 00-.15-4.8zM9.75 14.568V9.432L14.568 12 9.75 14.568z" />
+              </svg>
+            </a>
+            <span class="text-xs font-medium text-slate-600">YouTube</span>
+          </div>
+        {% endunless %}
+      {% endif %}
+
       {% assign scholar = site.social.google_scholar %}
       {% if scholar and scholar != '' %}
         {% unless scholar contains '<<' %}

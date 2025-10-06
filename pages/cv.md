@@ -4,7 +4,7 @@ title: null
 permalink: /cv/
 description: "Curriculum vitae of Krishna Kumar Patel, PhD student at IIT Delhi focusing on molecular simulations and hydrogen storage."
 meta:
-  title: "Krishna Kumar Patel - Curriculum Vitae"
+  title: "Krishna Kumar Patel — Curriculum Vitae"
   description: "Education, skills, and research experience of Krishna Patel, PhD student in Chemical Engineering at IIT Delhi."
 extra_head: |
   <style>
@@ -38,7 +38,7 @@ extra_head: |
       <h1 class="text-3xl font-semibold text-brand">Curriculum Vitae</h1>
       <p class="text-sm uppercase tracking-widest text-muted">{{ site.role_line }}</p>
       <p class="text-base text-slate-600">
-        Krishna Kumar Patel - molecular simulation researcher specializing in carbonaceous materials, polymer–solvent systems, and hydrogen storage.
+        Krishna Kumar Patel — molecular simulation researcher specializing in carbonaceous materials, polymer–solvent systems, and hydrogen storage.
       </p>
     </div>
     <a
