@@ -28,19 +28,6 @@ permalink: /
 </div>
 
 <section>
-  <h2 class="text-2xl font-semibold text-brand">Research snapshot</h2>
-  <p>
-    My research explores how atomic/molecular interactions drive macroscale properties in soft matter systems and advanced carbon materials.
-  </p>
-  <ul>
-    <li>Molecular dynamics simulations of polymers and carbon materials</li>
-    <li>Hydrogen storage on graphene and carbon based systems</li>
-    <li>Force-field validation (ReaxFF, AIREBO) with stress–strain characterization</li>
-    <li>Adsorption energetics, gravimetric and volumetric capacity calculations</li>
-  </ul>
-</section>
-
-<section>
   <h2 class="text-2xl font-semibold text-brand">Recent highlights</h2>
   <div class="grid gap-6 md:grid-cols-2">
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
