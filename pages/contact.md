@@ -20,7 +20,7 @@ meta:
         id="contact-form"
         name="contact"
         method="POST"
-        action="https://formspree.io/f/cc88b6804185"
+        action="https://formkeep.com/f/cc88b6804185"
         class="mt-6 space-y-5"
         data-fallback-email="{{ site.person.email }}"
       >
