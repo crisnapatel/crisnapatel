@@ -1,6 +1,6 @@
-# Personal site for Krishna Patel
+# Personal site
 
-A Jekyll-powered personal research website for Krishna Kumar Patel (PhD student, Chemical Engineering, IIT Delhi). The site mirrors the public information from the institute profile and reshapes it into a clean, responsive layout suitable for GitHub Pages deployment.
+A Jekyll-powered personal research website for Krishna Kumar Patel (PhD student, Chemical Engineering, IIT Delhi). 
 
 ## Getting started
 
