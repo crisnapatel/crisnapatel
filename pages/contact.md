@@ -12,18 +12,21 @@ meta:
   <div class="grid gap-10 md:grid-cols-2">
     <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
       <h1 class="text-2xl font-semibold text-brand">Send a message</h1>
-      <!-- Edit <YOUR_FORM_ID> in the action URL with your Formspree form ID. -->
+      <p class="mt-2 text-sm text-slate-600">
+        I respond to most messages within two working days. Share your research context and any specific questions so I can prepare resources in advance.
+      </p>
+      <!-- Replace <YOUR_FORM_ID> in the action URL with your Formspree form ID, or swap the endpoint for another provider such as FormKeep. -->
       <form
         id="contact-form"
         name="contact"
         method="POST"
-        action="https://formspree.io/f/cc88b6804185"
+        action="https://formspree.io/f/<YOUR_FORM_ID>"
         class="mt-6 space-y-5"
         data-fallback-email="{{ site.person.email }}"
       >
         <!-- Netlify Forms: add data-netlify="true" netlify-honeypot="bot-field" to this form and uncomment the hidden form-name field below. -->
         <!-- <input type="hidden" name="form-name" value="contact" /> -->
-        <input type="hidden" name="subject" value="Website message from {{ site.person.name }}" />
+        <input type="hidden" name="_subject" value="Website message from {{ site.person.name }}" />
         <input
           type="text"
           name="_gotcha"

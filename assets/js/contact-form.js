@@ -3,66 +3,87 @@
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    const okEl = document.getElementById('contact-success');
-    const errEl = document.getElementById('contact-error');
-    const btn = form.querySelector('button[type="submit"]');
+    const successMessage = document.getElementById('contact-success');
+    const errorMessage = document.getElementById('contact-error');
+    const submitButton = form.querySelector('button[type="submit"]');
     const fallbackEmail = form.dataset.fallbackEmail || 'chz218339@iitd.ac.in';
-
-    // Must be a valid Formspree endpoint like: https://formspree.io/f/xxxxabcd
-    const action = form.getAttribute('action') || '';
-    if (!/https:\/\/formspree\.io\/f\/[A-Za-z0-9]+/.test(action)) return;
-
-    function show(el, msg) {
-      if (!el) return;
-      if (msg) el.innerHTML = msg;
-      el.classList.remove('hidden');
-      if (typeof el.focus === 'function') el.focus({ preventScroll: false });
+    const actionUrl = form.getAttribute('action') || '';
+    if (!actionUrl || actionUrl.includes('<YOUR_FORM_ID>')) {
+      // No usable endpoint configured; allow the native submit behaviour.
+      return;
     }
-    function hide(el) { if (el) el.classList.add('hidden'); }
 
-    form.addEventListener('submit', async function (e) {
-      // block bots
-      const honeypot = form.querySelector('input[name="_gotcha"]');
-      if (honeypot && honeypot.value) { e.preventDefault(); return; }
-
-      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
-        e.preventDefault(); return;
+    function showMessage(element) {
+      if (!element) return;
+      element.classList.remove('hidden');
+      if (typeof element.focus === 'function') {
+        element.focus({ preventScroll: false });
       }
-      e.preventDefault();
+    }
 
-      hide(okEl); hide(errEl);
-      if (btn) { btn.dataset.t = btn.textContent; btn.textContent = 'Sending…'; btn.disabled = true; btn.setAttribute('aria-busy','true'); }
+    function hideMessage(element) {
+      if (!element) return;
+      element.classList.add('hidden');
+    }
 
-      const fd = new FormData(form);
+    form.addEventListener('submit', async function (event) {
+      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+
+      hideMessage(successMessage);
+      hideMessage(errorMessage);
+
+      if (submitButton) {
+        submitButton.dataset.originalText = submitButton.dataset.originalText || submitButton.textContent;
+        submitButton.textContent = 'Sending…';
+        submitButton.disabled = true;
+      }
+
+      const formData = new FormData(form);
 
       try {
-        const res = await fetch(action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: fd
+        const response = await fetch(actionUrl, {
+          method: form.method || 'POST',
+          headers: {
+            Accept: 'application/json',
+          },
+          body: formData,
         });
 
-        if (res.ok) {
+        if (response.ok) {
           form.reset();
-          show(okEl);
-        } else {
-          let msg = 'There was a problem sending your message.';
-          try {
-            const data = await res.json();
-            if (data && data.errors && Array.isArray(data.errors)) {
-              msg = data.errors.map(e => e.message).join('<br>');
-            } else if (data && data.error) {
-              msg = data.error;
-            }
-          } catch {}
-          msg += ` <a class="font-semibold text-accent hover:underline" href="mailto:${encodeURIComponent(fallbackEmail)}?subject=Website%20message%20fallback">Email me</a>.`;
-          show(errEl, msg);
+          showMessage(successMessage);
+          return;
         }
-      } catch {
-        const msg = `Network error. Please try again or <a class="font-semibold text-accent hover:underline" href="mailto:${encodeURIComponent(fallbackEmail)}?subject=Website%20message%20fallback">email me directly</a>.`;
-        show(errEl, msg);
+
+        let errorText = 'There was a problem sending your message. You can email me directly instead.';
+        try {
+          const data = await response.json();
+          if (data && data.error) {
+            errorText = data.error;
+          }
+        } catch (jsonError) {
+          // ignore JSON parsing errors
+        }
+
+        if (errorMessage) {
+          errorMessage.innerHTML = `${errorText} <a class="font-semibold text-accent hover:underline" href="mailto:${encodeURIComponent(fallbackEmail)}?subject=Website%20message%20fallback">Email me</a>.`;
+          showMessage(errorMessage);
+        }
+      } catch (networkError) {
+        if (errorMessage) {
+          errorMessage.innerHTML = `Network error. Please try again or <a class="font-semibold text-accent hover:underline" href="mailto:${encodeURIComponent(fallbackEmail)}?subject=Website%20message%20fallback">email me directly</a>.`;
+          showMessage(errorMessage);
+        }
       } finally {
-        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.t || 'Submit'; btn.removeAttribute('aria-busy'); }
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButton.dataset.originalText || 'Submit';
+        }
       }
     });
   });
