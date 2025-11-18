@@ -49,7 +49,7 @@ permalink: /
   <h2 class="text-2xl font-semibold text-brand">Teaching & outreach</h2>
   <ul>
     <li>Teaching Assistant for CLL113 (Numerical Methods) at IIT Delhi (year 2023, 2024, 2025).</li>
-    <li>Creator of the <a href="https://www.youtube.com/@NanoscaleModeling" class="text-accent hover:underline">NanoscaleModeling</a> YouTube channel with tutorials on molecular dynamics fundamentals.</li>
+    <li>Creator of the <a href="https://www.youtube.com/channel/UCLz7KTIBaCLX8iBMOHBMNVg" class="text-accent hover:underline">NanoscaleModeling</a> YouTube channel with tutorials on molecular dynamics fundamentals.</li>
   </ul>
 </section>
 
