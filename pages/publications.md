@@ -2,193 +2,92 @@
 layout: page
 title: Publications
 permalink: /publications/
+description: "Publications and presentations."
+subtitle: "Curated selection of journal articles, conference papers, and talks."
+---
+> **Note:** Entries below summarise currently shareable work. 
+
+## Journal manuscripts in preparation
+- Hydrogen adsorption on functionalized graphene/CNT heterostructures. 
+- Polymer dimention and diffusivity near graphene interfaces (submitted).
+
+## Conference presentations
+
+### 2025
+
+- **K. K. Patel** and J. Sarkar, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *CompFlu 2025: Annual International Meeting on Complex Fluids and Soft Matter in India*, J. N. Tata Auditorium, Indian Institute of Science (IISc), Bangalore, India, 13–17 December 2025. (Flash talk & Poster)
+
+- **K. K. Patel** and J. Sarkar, Poster presentation at *3rd International Conference on Thin Films and Nanotechnology—Knowledge, Leadership and Commercialization (ICTN-KLC 2025)*, IIT Delhi, India, 11–13 December 2025.
+
+- **K. K. Patel**\*, N. Singh\*, and J. Sarkar, "Simulation-based Study of Hydrogen Production and Storage," *ChemRD2 Symposium*, Department of Chemical Engineering, IIT Delhi, India, 27–28 November 2025. (Poster; \*Equal contribution)
+
+### 2024
+
+- Presented a poster on *polystyrene dimensions and diffusivity* at Soft Matter Meet-2024 organised by School of Natural Sciences at Shiv Nadar University, Delhi NCR.
+
 ---
 
-<style>
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  overflow: hidden;
-  background: #f5f5f5;
-  border-radius: 8px;
-}
+## Conference Gallery
 
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 60%; /* Aspect ratio for images */
-}
-
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.carousel-slide.active {
-  opacity: 1;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.carousel-controls {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
-
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-  background: rgba(255, 255, 255, 0.9);
-  transform: scale(1.2);
-}
-
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 15px 20px;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-
-.carousel-nav:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.carousel-nav.prev {
-  left: 10px;
-}
-
-.carousel-nav.next {
-  right: 10px;
-}
-</style>
-
-<div class="carousel-container">
-  <div class="carousel-wrapper">
-    <div class="carousel-slide active">
-      <img src="/assets/images/publication1.jpg" alt="Publication 1">
+<div class="not-prose">
+  <section class="mt-12">
+    <h3 class="text-xl font-semibold text-brand mb-6">ICTN-KLC 2025 — IIT Delhi</h3>
+    <div class="flex justify-center">
+      <figure class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm" style="max-width: 90%;">
+        <img src="{{ '/assets/conferences/ICTN_Abstract_Page.png' | relative_url }}" alt="Poster on Optimizing Hydrogen Adsorption on Graphene Oxide" class="w-full h-auto" />
+        <figcaption class="bg-slate-50 px-4 py-3 text-sm text-slate-600 text-center">"Optimizing Hydrogen Adsorption on Graphene Oxide" presented at ICTN-KLC 2025</figcaption>
+      </figure>
     </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/publication2.jpg" alt="Publication 2">
+  </section>
+
+  <section class="mt-12">
+    <h3 class="text-xl font-semibold text-brand mb-6">CompFlu 2025 — IISc Bangalore</h3>
+    <div class="flex justify-center">
+      <div class="carousel-container rounded-2xl overflow-hidden border border-slate-200 shadow-sm" style="position: relative; max-width: 800px; width: 100%;">
+        <div style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden;">
+          <img class="carousel-image" src="{{ '/assets/conferences/PresentingFlashTak.JPG' | relative_url }}" alt="Presenting flash talk at CompFlu 2025" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; transition: opacity 1s ease-in-out;" data-caption="Presenting flash talk at CompFlu 2025, IISc Bangalore" />
+          <img class="carousel-image" src="{{ '/assets/conferences/Presenting_Poster.JPG' | relative_url }}" alt="Presenting poster at CompFlu 2025" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="Presenting poster at CompFlu 2025" />
+          <img class="carousel-image" src="{{ '/assets/conferences/Ankita_jayatiSarkar_Mukul_KrishnaPatel_Jagat_InJNTATAAuditoriumIISs.JPG' | relative_url }}" alt="With labmates at J. N. Tata Auditorium" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="With labmates at J. N. Tata Auditorium, IISc" />
+          <img class="carousel-image" src="{{ '/assets/conferences/RandomClickInJNTATAAuditoriumIISc.JPG' | relative_url }}" alt="Attending sessions at CompFlu 2025" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="Attending sessions at CompFlu 2025" />
+          <img class="carousel-image" src="{{ '/assets/conferences/Jagat_Ankita_Sarkar_Krishna_Mukul_IISc_Iconic_Building_Front.JPG' | relative_url }}" alt="Group photo in front of IISc iconic building" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="With Prof. Jayati Sarkar and labmates at IISc iconic building" />
+          <img class="carousel-image" src="{{ '/assets/conferences/Krishna_Ankita_Sarkar_Mukul_Jagat_IISc_Chem_Eng_Dept_front.JPG' | relative_url }}" alt="At IISc Chemical Engineering Department" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="At Chemical Engineering Department, IISc" />
+          <img class="carousel-image" src="{{ '/assets/conferences/IISc_Iconic_Building_Front.jpeg' | relative_url }}" alt="IISc iconic building front view" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="IISc iconic building - Front view" />
+          <img class="carousel-image" src="{{ '/assets/conferences/IISc_Iconic_Building_Side.jpeg' | relative_url }}" alt="IISc iconic building side view" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 1s ease-in-out;" data-caption="IISc iconic building - Side view" />
+        </div>
+        <figcaption id="carousel-caption" class="bg-slate-50 px-4 py-3 text-sm text-slate-600 text-center">Presenting flash talk at CompFlu 2025, IISc Bangalore</figcaption>
+      </div>
     </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/publication3.jpg" alt="Publication 3">
-    </div>
-  </div>
-  
-  <button class="carousel-nav prev" onclick="changeSlide(-1)">‹</button>
-  <button class="carousel-nav next" onclick="changeSlide(1)">›</button>
-  
-  <div class="carousel-controls">
-    <span class="carousel-dot active" onclick="currentSlide(0)"></span>
-    <span class="carousel-dot" onclick="currentSlide(1)"></span>
-    <span class="carousel-dot" onclick="currentSlide(2)"></span>
-  </div>
+  </section>
 </div>
 
 <script>
-let currentIndex = 0;
-let autoRotateInterval;
-const rotationTime = 4000; // 4 seconds
+(function() {
+  const images = document.querySelectorAll('.carousel-image');
+  const caption = document.getElementById('carousel-caption');
+  let currentIndex = 0;
 
-function showSlide(index) {
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  
-  // Remove active class from all slides and dots
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-  
-  // Wrap around if index is out of bounds
-  if (index >= slides.length) {
-    currentIndex = 0;
-  } else if (index < 0) {
-    currentIndex = slides.length - 1;
-  } else {
-    currentIndex = index;
+  function showNextImage() {
+    // Fade out current image
+    images[currentIndex].style.opacity = '0';
+    
+    setTimeout(function() {
+      // Move to next image
+      currentIndex = (currentIndex + 1) % images.length;
+      
+      // Fade in next image
+      images[currentIndex].style.opacity = '1';
+      
+      // Update caption
+      if (caption && images[currentIndex].dataset.caption) {
+        caption.textContent = images[currentIndex].dataset.caption;
+      }
+    }, 1000);
   }
-  
-  // Add active class to current slide and dot
-  slides[currentIndex].classList.add('active');
-  dots[currentIndex].classList.add('active');
-}
 
-function changeSlide(direction) {
-  showSlide(currentIndex + direction);
-  resetAutoRotate();
-}
+  // Initialize first image
+  images[0].style.opacity = '1';
 
-function currentSlide(index) {
-  showSlide(index);
-  resetAutoRotate();
-}
-
-function autoRotate() {
-  showSlide(currentIndex + 1);
-}
-
-function resetAutoRotate() {
-  clearInterval(autoRotateInterval);
-  autoRotateInterval = setInterval(autoRotate, rotationTime);
-}
-
-// Start auto-rotation when page loads
-document.addEventListener('DOMContentLoaded', function() {
-  autoRotateInterval = setInterval(autoRotate, rotationTime);
-});
+  // Start carousel - rotate every 4 seconds
+  setInterval(showNextImage, 4000);
+})();
 </script>
-
-## Selected Publications
-
-### Journal Articles
-
-1. **Patel, C.** et al. (2024). "Advanced Machine Learning Techniques in Data Science." *Journal of Computational Research*, 45(2), 123-145.
-
-2. **Patel, C.** & Smith, J. (2023). "Novel Approaches to Algorithm Optimization." *International Journal of Computer Science*, 32(4), 567-589.
-
-3. **Patel, C.** (2023). "Deep Learning Applications in Modern Computing." *AI Research Quarterly*, 18(1), 34-56.
-
-### Conference Proceedings
-
-1. **Patel, C.** et al. (2024). "Scalable Solutions for Big Data Processing." Proceedings of the International Conference on Data Science (ICDS 2024), pp. 78-92.
-
-2. **Patel, C.** (2023). "Innovative Methods in Neural Network Architecture." Proceedings of the IEEE Conference on Artificial Intelligence, pp. 234-248.
-
-### Book Chapters
-
-1. **Patel, C.** (2024). "Foundations of Modern Data Analytics." In *Handbook of Computational Methods*, eds. Johnson, A. & Lee, K., pp. 145-178. Academic Press.
-
----
-
-*For a complete list of publications, please visit my [Google Scholar profile](https://scholar.google.com) or [ResearchGate](https://researchgate.net).*
