@@ -120,12 +120,12 @@
                         <p class="text-stone-600 text-sm mb-4">
                             We track the position $\mathbf{R}$ of atoms $n$ and $m$. The raw vector is:
                             <br><br>
-                            <code class="bg-stone-100 px-2 py-1 rounded text-stone-800 font-mono">r_mn(t) = R_n(t) - R_m(t)</code>
+                            $$\mathbf{r}_{mn}(t) = \mathbf{R}_n(t) - \mathbf{R}_m(t)$$
                         </p>
                         <p class="text-stone-600 text-sm">
                             Since we care about <strong>orientation</strong>, not bond stretching, we normalize it:
                             <br><br>
-                            <code class="bg-stone-100 px-2 py-1 rounded text-stone-800 font-mono">u_mn(t) = r_mn(t) / |r_mn(t)|</code>
+                            $$\mathbf{u}_{mn}(t) = \frac{\mathbf{r}_{mn}(t)}{|\mathbf{r}_{mn}(t)|}$$
                         </p>
                     </div>
                     
@@ -169,7 +169,7 @@
 
                         <div class="space-y-3">
                             <div class="flex justify-between items-center p-3 bg-stone-50 rounded border border-stone-200">
-                                <span class="text-sm font-medium">Cos($\theta$) (x)</span>
+                                <span class="text-sm font-medium">$\cos(\theta) = x$</span>
                                 <span id="val-cos" class="font-mono font-bold">1.00</span>
                             </div>
                             <div class="flex justify-between items-center p-3 bg-blue-50 rounded border border-blue-100">
