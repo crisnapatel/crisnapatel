@@ -62,13 +62,85 @@
         <!-- 2. ANALYSIS DASHBOARD (Hidden until loaded) -->
         <div id="dashboard" class="hidden space-y-10">
             
+            <!-- EDUCATIONAL INTRODUCTION -->
+            <section class="glass-panel p-8 bg-gradient-to-br from-indigo-50 to-white border-l-4 border-indigo-600">
+                <div class="max-w-4xl">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <span class="text-3xl">🎓</span>
+                        Understanding Mean Square Displacement (MSD)
+                    </h2>
+                    
+                    <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                        <p>
+                            <strong class="text-indigo-700">What is MSD?</strong> Mean Square Displacement measures how far molecules move from their starting positions over time. For diffusive motion in 3D, the Einstein relation tells us that $\text{MSD}(\tau) = 6D\tau$, where $D$ is the <em>diffusion coefficient</em> we want to extract and $\tau$ is the lag time.
+                        </p>
+                        
+                        <p>
+                            <strong class="text-indigo-700">The Challenge:</strong> Computing MSD from a single time origin (e.g., measuring displacement only from frame 0) gives extremely noisy results because we get just <em>one measurement</em> per lag time. This is where the <strong>sliding window technique</strong> becomes crucial.
+                        </p>
+                        
+                        <p>
+                            <strong class="text-indigo-700">The Solution:</strong> Instead of one origin, we measure displacement starting from <em>every possible frame</em>. For a lag time $\tau = 100$ frames in a 1000-frame trajectory, we get 900 independent measurements! This dramatically reduces noise and reveals the true linear trend needed to extract accurate diffusivity.
+                        </p>
+                        
+                        <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded mt-4">
+                            <p class="text-sm">
+                                <strong>💡 Interactive Learning:</strong> Use the controls below to experiment! Try increasing the <strong>Max Lag Time</strong> slider and watch how the number of measurements (N) decreases, making the curve noisier at the tail. Adjust the <strong>Fit Region</strong> sliders to see how choosing different portions of the curve affects the calculated diffusivity and R² value.
+                            </p>
+                        </div>
+                        
+                        <p class="text-xs text-slate-500 italic mt-4">
+                            <strong>Note on the data:</strong> This demo uses pre-calculated center-of-mass (COM) trajectories for polystyrene chains. Using COM instead of individual atoms filters out internal wiggling motions (Rouse modes), revealing only the chain's net translational diffusion. The coordinates are "unwrapped" to handle periodic boundary conditions correctly.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
             <!-- A. THEORY LAB -->
             <section class="grid lg:grid-cols-2 gap-8">
                 
+                <!-- Theory: COM & Unwrapping -->
+                <div class="glass-panel p-6 border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> 
+                        Why COM & Unwrapping?
+                    </h3>
+                    
+                    <div class="flex gap-6">
+                        <!-- Canvas Visualization -->
+                        <div class="relative w-40 h-40 bg-slate-50 border border-slate-200 rounded flex-shrink-0">
+                            <canvas id="polyCanvas" width="160" height="160"></canvas>
+                            <div class="absolute bottom-1 right-1 text-[9px] text-slate-400">Polymer Chain</div>
+                        </div>
+                        
+                        <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
+                            <p>
+                                <strong>Why Center-of-Mass (COM)?</strong> <span class="text-rose-600 font-bold">●</span><br>
+                                Polymers wiggle internally (Rouse modes). Tracking individual atoms includes this "noise," showing $t^{0.5}$ behavior at short times. The COM filters this out, revealing only the chain's net translational diffusion.
+                            </p>
+                            <p>
+                                <strong>Why Unwrap Coordinates?</strong><br>
+                                Periodic boundaries cause atoms to "jump" across the box (Pac-Man style). We must unwrap these jumps to get continuous trajectories for true displacement calculations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <div class="bg-slate-50 p-2 rounded">
+                            <span class="block text-[9px] uppercase text-slate-400 font-bold">Total Frames</span>
+                            <span id="info-frames" class="text-base font-mono font-bold text-slate-800">--</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded">
+                            <span class="block text-[9px] uppercase text-slate-400 font-bold">Sets Found</span>
+                            <span id="info-sets" class="text-[10px] font-mono font-bold text-slate-800">--</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Theory: Sliding Window -->
                 <div class="glass-panel p-6 border-l-4 border-emerald-500">
                     <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                        <span class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
                         Concept: The Sliding Window
                     </h3>
                     
@@ -87,34 +159,6 @@
                     <div class="mt-3 flex justify-between items-center text-xs">
                         <span class="text-slate-500">Visualization: 5 sample measurement windows</span>
                         <span class="font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">N = TotalFrames - Lag</span>
-                    </div>
-                </div>
-
-                <!-- Theory: Unwrapped Coordinates -->
-                <div class="glass-panel p-6 border-l-4 border-indigo-500">
-                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-100 text-indigo-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
-                        Input Data Check
-                    </h3>
-                    
-                    <div class="space-y-4 text-sm text-slate-600">
-                        <p>
-                            <strong>Status:</strong> <span class="text-emerald-600 font-bold">Unwrapped Coordinates Detected</span>
-                        </p>
-                        <p class="text-xs leading-relaxed">
-                            Your JSON contains coordinates like $y=117.9$ Å, which is larger than the simulation box (~71.4 Å). 
-                            This confirms the data is already "unwrapped," allowing us to calculate true diffusion distances without periodic boundary jumps.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div class="bg-slate-50 p-3 rounded">
-                                <span class="block text-[10px] uppercase text-slate-400 font-bold">Total Frames</span>
-                                <span id="info-frames" class="text-lg font-mono font-bold text-slate-800">--</span>
-                            </div>
-                            <div class="bg-slate-50 p-3 rounded">
-                                <span class="block text-[10px] uppercase text-slate-400 font-bold">Sets Found</span>
-                                <span id="info-sets" class="text-xs font-mono font-bold text-slate-800">--</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -218,6 +262,66 @@
     </main>
 
     <script>
+        // --- VISUALIZATION: POLYMER CANVAS ---
+        const canvas = document.getElementById('polyCanvas');
+        const ctxViz = canvas.getContext('2d');
+        let particles = [];
+        
+        // Create random chain
+        function initChain() {
+            particles = [];
+            let x = 80, y = 80;
+            for(let i=0; i<12; i++) {
+                particles.push({x, y});
+                x += (Math.random()-0.5)*25;
+                y += (Math.random()-0.5)*25;
+            }
+        }
+        initChain();
+
+        function animateChain() {
+            ctxViz.clearRect(0, 0, 160, 160);
+            
+            // Jiggle particles (simulate internal wiggling)
+            let cx=0, cy=0;
+            ctxViz.beginPath();
+            particles.forEach((p, i) => {
+                p.x += (Math.random()-0.5)*1.2;
+                p.y += (Math.random()-0.5)*1.2;
+                cx+=p.x; cy+=p.y;
+                
+                if(i===0) ctxViz.moveTo(p.x, p.y);
+                else ctxViz.lineTo(p.x, p.y);
+            });
+            ctxViz.strokeStyle = '#94a3b8';
+            ctxViz.lineWidth = 2;
+            ctxViz.stroke();
+
+            // Draw atoms (small grey circles)
+            particles.forEach(p => {
+                ctxViz.beginPath();
+                ctxViz.arc(p.x, p.y, 2.5, 0, Math.PI*2);
+                ctxViz.fillStyle = '#64748b';
+                ctxViz.fill();
+            });
+
+            // Draw COM (red dot)
+            cx /= particles.length;
+            cy /= particles.length;
+            
+            ctxViz.beginPath();
+            ctxViz.arc(cx, cy, 5, 0, Math.PI*2);
+            ctxViz.fillStyle = '#dc2626'; // Red
+            ctxViz.fill();
+            ctxViz.strokeStyle = 'white';
+            ctxViz.lineWidth = 2;
+            ctxViz.stroke();
+            
+            requestAnimationFrame(animateChain);
+        }
+        animateChain();
+
+
         // --- MAIN APPLICATION LOGIC ---
 
         let trajectoryData = null;
