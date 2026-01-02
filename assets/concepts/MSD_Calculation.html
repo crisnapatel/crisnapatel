@@ -13,19 +13,14 @@
     
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
         .glass-panel { background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .chart-wrapper { position: relative; height: 450px; width: 100%; }
+        .chart-wrapper { position: relative; height: 500px; width: 100%; }
         
-        /* Loaders and Sliders */
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
+        /* Custom Sliders */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #4f46e5; cursor: pointer; margin-top: -7px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); border: 2px solid white; }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #cbd5e1; border-radius: 2px; }
         input[type=range]:focus { outline: none; }
-
         .range-group input[type=range] { pointer-events: none; position: absolute; height: 0; width: 100%; outline: none; }
         .range-group input[type=range]::-webkit-slider-thumb { pointer-events: all; position: relative; z-index: 10; outline: 0; }
     </style>
@@ -40,7 +35,7 @@
                 <h1 class="text-lg font-bold tracking-tight">Einstein MSD <span class="text-indigo-400">Analysis Lab</span></h1>
             </div>
             <div class="text-xs font-mono bg-slate-800 px-3 py-1 rounded border border-slate-700">
-                Data: Trajectory .lammpstrj
+                Data: Pre-calculated JSON
             </div>
         </div>
     </header>
@@ -50,16 +45,16 @@
         <!-- 1. DATA LOADING SECTION -->
         <section id="upload-section" class="glass-panel p-12 text-center transition-all duration-500">
             <div class="max-w-xl mx-auto space-y-6">
-                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-2xl">📊</div>
-                <h2 class="text-2xl font-bold text-slate-900">Loading Trajectory Data</h2>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">📊</div>
+                <h2 class="text-2xl font-bold text-slate-900">Loading MSD Data</h2>
                 <p class="text-slate-600">
-                    Parsing <code>trajectory_sets_1_10_10000.lammpstrj</code><br>
-                    <span class="text-xs text-slate-400">Calculating Chain Center-of-Mass (COM) and Unwrapping Coordinates...</span>
+                    Loading <code>msd_data.json</code><br>
+                    <span class="text-xs text-slate-400">Contains unwrapped coordinates for PS1, PS2, PS3, GRA.</span>
                 </p>
-
+                
                 <div id="loading" class="flex flex-col items-center gap-3 mt-4">
-                    <div class="loader"></div>
-                    <span class="text-sm font-bold text-indigo-600">Processing <span id="progress-text">0%</span></span>
+                    <div class="loader" style="border: 4px solid #f3f3f3; border-top: 4px solid #10b981; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+                    <span class="text-sm font-bold text-emerald-600">Loading data...</span>
                 </div>
             </div>
         </section>
@@ -67,61 +62,59 @@
         <!-- 2. ANALYSIS DASHBOARD (Hidden until loaded) -->
         <div id="dashboard" class="hidden space-y-10">
             
-            <!-- A. THEORY & CONCEPT LAB -->
+            <!-- A. THEORY LAB -->
             <section class="grid lg:grid-cols-2 gap-8">
                 
-                <!-- Theory: COM & Unwrapping -->
-                <div class="glass-panel p-6 border-l-4 border-indigo-500">
-                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-100 text-indigo-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">A</span> 
-                        Step 1: Center of Mass & Unwrapping
-                    </h3>
-                    
-                    <div class="flex gap-6">
-                        <!-- Canvas Visualization -->
-                        <div class="relative w-40 h-40 bg-slate-50 border border-slate-200 rounded flex-shrink-0">
-                            <canvas id="polyCanvas" width="160" height="160"></canvas>
-                            <div class="absolute bottom-1 right-1 text-[10px] text-slate-400">Chain Viz</div>
-                        </div>
-                        
-                        <div class="space-y-3 text-sm text-slate-600">
-                            <p>
-                                <strong>Why COM?</strong> A polymer chain wiggles (Rouse modes). If we track individual atoms, this wiggling looks like diffusion at short times ($t^{0.5}$). Calculating the <span class="text-rose-600 font-bold">Center of Mass (Red Dot)</span> filters this noise, isolating the chain's net motion.
-                            </p>
-                            <p>
-                                <strong>Why Unwrap?</strong> In MD, atoms warp across periodic boundaries (Pac-man style). We must "unwrap" these jumps to get a continuous trajectory $r(t)$ for calculating displacement.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Theory: Sliding Window -->
                 <div class="glass-panel p-6 border-l-4 border-emerald-500">
                     <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">B</span>
-                        Step 2: The Sliding Window Algorithm
+                        <span class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                        Concept: The Sliding Window
                     </h3>
                     
                     <p class="text-xs text-slate-600 mb-4">
-                        To extract maximum data from a single trajectory, we calculate displacement starting from <em>every possible time origin</em> $t_0$.
+                        To calculate MSD from a single trajectory, we re-use the data by shifting the "Time Origin" ($t_0$). 
+                        <br><strong>Trade-off:</strong> Larger Lag Times ($\tau$) mean fewer possible windows ($N$), leading to poorer statistics at the tail.
                     </p>
 
                     <!-- Algorithm Viz -->
-                    <div class="relative bg-slate-100 h-24 rounded border border-slate-200 overflow-hidden">
-                        <div class="absolute top-2 left-2 text-[10px] text-slate-400 font-mono">TIMELINE (Total Frames)</div>
-                        
-                        <!-- Base Timeline -->
-                        <div class="absolute top-8 left-4 right-4 h-2 bg-slate-300 rounded"></div>
-                        
-                        <!-- Moving Windows (Animated via CSS) -->
-                        <div id="window-animation-container" class="absolute inset-0 top-6">
-                            <!-- Injected via JS -->
-                        </div>
+                    <div class="relative bg-slate-100 h-28 rounded border border-slate-200 overflow-hidden">
+                        <div class="absolute top-2 left-2 text-[10px] text-slate-400 font-mono">TIMELINE ($T_{total}$)</div>
+                        <div class="absolute top-10 left-4 right-4 h-2 bg-slate-300 rounded"></div>
+                        <div id="window-animation-container" class="absolute inset-0 top-8"></div>
                     </div>
                     
                     <div class="mt-3 flex justify-between items-center text-xs">
-                        <span class="text-slate-500">Formula: $MSD(\tau) = \frac{1}{N} \sum_{i=1}^{N} |r(t_i + \tau) - r(t_i)|^2$</span>
-                        <span class="font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">N = Total - Lag</span>
+                        <span class="text-slate-500">Visualization: 5 sample measurement windows</span>
+                        <span class="font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">N = TotalFrames - Lag</span>
+                    </div>
+                </div>
+
+                <!-- Theory: Unwrapped Coordinates -->
+                <div class="glass-panel p-6 border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
+                        Input Data Check
+                    </h3>
+                    
+                    <div class="space-y-4 text-sm text-slate-600">
+                        <p>
+                            <strong>Status:</strong> <span class="text-emerald-600 font-bold">Unwrapped Coordinates Detected</span>
+                        </p>
+                        <p class="text-xs leading-relaxed">
+                            Your JSON contains coordinates like $y=117.9$ Å, which is larger than the simulation box (~71.4 Å). 
+                            This confirms the data is already "unwrapped," allowing us to calculate true diffusion distances without periodic boundary jumps.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="bg-slate-50 p-3 rounded">
+                                <span class="block text-[10px] uppercase text-slate-400 font-bold">Total Frames</span>
+                                <span id="info-frames" class="text-lg font-mono font-bold text-slate-800">--</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded">
+                                <span class="block text-[10px] uppercase text-slate-400 font-bold">Sets Found</span>
+                                <span id="info-sets" class="text-xs font-mono font-bold text-slate-800">--</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -135,9 +128,7 @@
                     <!-- 1. Select Set -->
                     <div class="w-full md:w-auto">
                         <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Target Polymer</label>
-                        <div class="flex gap-2" id="set-buttons">
-                            <!-- JS Injected -->
-                        </div>
+                        <div class="flex gap-2" id="set-buttons"></div>
                     </div>
 
                     <!-- 2. Max Lag Slider -->
@@ -148,14 +139,14 @@
                         </label>
                         <input type="range" id="maxLagSlider" min="10" max="1000" value="100" class="w-full">
                         <div class="flex justify-between text-[10px] text-slate-400 mt-1">
-                            <span>Short (Clean)</span>
-                            <span>Long (Noisy)</span>
+                            <span>Short (Clean Stats)</span>
+                            <span>Long (Noisy Tail)</span>
                         </div>
                     </div>
 
                     <!-- 3. Fit Range Sliders -->
                     <div class="w-full md:w-64 relative">
-                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Linear Fit Range</label>
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Linear Fit Region</label>
                         <div class="relative h-6 range-group">
                             <div class="absolute top-2 left-0 right-0 h-1 bg-slate-300 rounded"></div>
                             <div id="fit-highlight" class="absolute top-2 h-1 bg-amber-400 rounded pointer-events-none"></div>
@@ -167,7 +158,6 @@
                             <span id="fit-end-val">t=90</span>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Main Chart Area -->
@@ -191,31 +181,34 @@
                             </div>
                             <div class="mt-2 pt-2 border-t border-slate-700 flex flex-col gap-1">
                                 <span class="text-xs text-slate-300" id="diff-cm-val">-- cm²/s</span>
-                                <span class="text-[10px] text-slate-500">Slope: <span id="slope-val" class="font-mono">--</span></span>
+                                <span class="text-[10px] text-slate-500">Slope ($6D$): <span id="slope-val" class="font-mono">--</span></span>
                                 <span class="text-[10px] text-slate-500">Fit $R^2$: <span id="r2-val" class="font-mono text-amber-400">--</span></span>
                             </div>
                         </div>
 
                         <!-- Stats Box -->
                         <div class="bg-white border border-slate-200 p-4 rounded-xl">
-                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-2">Statistics</h4>
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-2">Data Statistics</h4>
                             <div class="text-xs space-y-2">
                                 <div class="flex justify-between">
                                     <span class="text-slate-600">Total Frames:</span>
                                     <span id="stat-total" class="font-mono font-bold">--</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-slate-600">Lag $\tau$:</span>
+                                    <span class="text-slate-600">Current Lag:</span>
                                     <span id="stat-lag" class="font-mono font-bold">--</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-slate-600">Measurements:</span>
+                                    <span class="text-slate-600">Measurements (N):</span>
                                     <span id="stat-measure" class="font-mono font-bold text-emerald-600">--</span>
                                 </div>
                             </div>
-                            <p class="text-[10px] text-slate-400 mt-3 leading-tight italic">
-                                The faint grey lines in the plot represent individual measurement windows. The blue line is their average.
-                            </p>
+                            <div class="mt-4 p-2 bg-slate-50 rounded text-[10px] text-slate-500 leading-snug">
+                                <strong>Visualization Key:</strong><br>
+                                <span class="text-slate-400">━</span> Grey: Individual Measurement Windows ($|r(t)-r(0)|^2$)<br>
+                                <span class="text-indigo-500 font-bold">━</span> Blue: Mean MSD (Average)<br>
+                                <span class="text-amber-500 font-bold">--</span> Amber: Linear Fit
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,207 +218,46 @@
     </main>
 
     <script>
-        // --- VISUALIZATION: POLYMER CANVAS ---
-        const canvas = document.getElementById('polyCanvas');
-        const ctxViz = canvas.getContext('2d');
-        let particles = [];
-        
-        // Create random chain
-        function initChain() {
-            particles = [];
-            let x = 80, y = 80;
-            for(let i=0; i<15; i++) {
-                particles.push({x, y});
-                x += (Math.random()-0.5)*30;
-                y += (Math.random()-0.5)*30;
-            }
-        }
-        initChain();
-
-        function animateChain() {
-            ctxViz.clearRect(0, 0, 160, 160);
-            
-            // Jiggle
-            let cx=0, cy=0;
-            ctxViz.beginPath();
-            particles.forEach((p, i) => {
-                p.x += (Math.random()-0.5)*1;
-                p.y += (Math.random()-0.5)*1;
-                cx+=p.x; cy+=p.y;
-                
-                if(i===0) ctxViz.moveTo(p.x, p.y);
-                else ctxViz.lineTo(p.x, p.y);
-            });
-            ctxViz.strokeStyle = '#94a3b8';
-            ctxViz.lineWidth = 2;
-            ctxViz.stroke();
-
-            // Draw atoms
-            particles.forEach(p => {
-                ctxViz.beginPath();
-                ctxViz.arc(p.x, p.y, 3, 0, Math.PI*2);
-                ctxViz.fillStyle = '#64748b';
-                ctxViz.fill();
-            });
-
-            // Draw COM
-            cx /= particles.length;
-            cy /= particles.length;
-            
-            ctxViz.beginPath();
-            ctxViz.arc(cx, cy, 5, 0, Math.PI*2);
-            ctxViz.fillStyle = '#e11d48'; // Red
-            ctxViz.fill();
-            ctxViz.strokeStyle = 'white';
-            ctxViz.lineWidth = 2;
-            ctxViz.stroke();
-            
-            requestAnimationFrame(animateChain);
-        }
-        animateChain();
-
-
         // --- MAIN APPLICATION LOGIC ---
 
-        let trajectoryData = { boxSize: {x:0,y:0,z:0}, totalFrames: 0, sets: {} };
+        let trajectoryData = null;
         let currentSet = null;
         let chartInstance = null;
 
-        // 1. AUTO-LOAD TRAJECTORY FILE
+        // 1. AUTO-LOAD DATA FILE
         window.addEventListener('DOMContentLoaded', function() {
-            const trajectoryFile = '../data/concepts/trajectory_sets_1_10_10000.lammpstrj';
+            const dataFile = '../data/concepts/msd_data.json';
             
-            document.getElementById('progress-text').textContent = 'Loading file...';
-            
-            fetch(trajectoryFile)
+            fetch(dataFile)
                 .then(response => {
-                    if (!response.ok) throw new Error('Failed to load trajectory file');
-                    
-                    const contentLength = response.headers.get('Content-Length');
-                    if (!contentLength) {
-                        return response.text();
-                    }
-                    
-                    // Track download progress
-                    const total = parseInt(contentLength, 10);
-                    let loaded = 0;
-                    
-                    const reader = response.body.getReader();
-                    const stream = new ReadableStream({
-                        start(controller) {
-                            function push() {
-                                reader.read().then(({ done, value }) => {
-                                    if (done) {
-                                        controller.close();
-                                        return;
-                                    }
-                                    loaded += value.byteLength;
-                                    document.getElementById('progress-text').textContent = 
-                                        Math.round((loaded / total) * 100) + '% downloaded';
-                                    controller.enqueue(value);
-                                    push();
-                                });
-                            }
-                            push();
-                        }
-                    });
-                    
-                    return new Response(stream).text();
+                    if (!response.ok) throw new Error('Failed to load data file');
+                    return response.json();
                 })
-                .then(text => {
-                    document.getElementById('progress-text').textContent = 'Parsing data...';
-                    parseLammpstrj(text);
+                .then(data => {
+                    trajectoryData = data;
                     initDashboard();
                 })
                 .catch(error => {
-                    console.error('Error loading trajectory:', error);
+                    console.error('Error loading data:', error);
                     document.getElementById('loading').innerHTML = 
-                        '<div class="text-red-600 font-semibold">❌ Error loading trajectory file. Please check console.</div>';
+                        '<div class="text-red-600 font-semibold">❌ Error loading data file. Please check console.</div>';
                 });
         });
-
-        function parseLammpstrj(text) {
-            const lines = text.split('\n');
-            let frame = 0;
-            let inAtoms = false;
-            let frameAtoms = {};
-            
-            // Reset
-            trajectoryData = { boxSize: {x:0,y:0,z:0}, totalFrames: 0, sets: {} };
-
-            // Process Frame Helper
-            const processFrame = () => {
-                if(frame === 0) return;
-                
-                for(const [setName, atoms] of Object.entries(frameAtoms)) {
-                    if(!trajectoryData.sets[setName]) trajectoryData.sets[setName] = [];
-                    
-                    // Calc COM
-                    let sx=0, sy=0, sz=0;
-                    atoms.forEach(a => { sx+=a.x; sy+=a.y; sz+=a.z; });
-                    let com = { x: sx/atoms.length, y: sy/atoms.length, z: sz/atoms.length };
-                    
-                    // Unwrap
-                    if(trajectoryData.sets[setName].length > 0) {
-                        const prev = trajectoryData.sets[setName][trajectoryData.sets[setName].length - 1];
-                        const L = trajectoryData.boxSize;
-                        
-                        let dx = com.x - prev.x;
-                        let dy = com.y - prev.y;
-                        let dz = com.z - prev.z;
-
-                        if(dx > L.x/2) com.x -= L.x; else if(dx < -L.x/2) com.x += L.x;
-                        if(dy > L.y/2) com.y -= L.y; else if(dy < -L.y/2) com.y += L.y;
-                        if(dz > L.z/2) com.z -= L.z; else if(dz < -L.z/2) com.z += L.z;
-                    }
-                    trajectoryData.sets[setName].push(com);
-                }
-                frameAtoms = {};
-            };
-
-            for(let i=0; i<lines.length; i++) {
-                const line = lines[i].trim();
-                if(line.includes('ITEM: TIMESTEP')) {
-                    if(frame>0) processFrame();
-                    frame++;
-                    inAtoms = false;
-                } else if(line.includes('ITEM: BOX BOUNDS')) {
-                    const xl = lines[i+1].trim().split(/\s+/);
-                    const yl = lines[i+2].trim().split(/\s+/);
-                    const zl = lines[i+3].trim().split(/\s+/);
-                    trajectoryData.boxSize = {
-                        x: parseFloat(xl[1])-parseFloat(xl[0]),
-                        y: parseFloat(yl[1])-parseFloat(yl[0]),
-                        z: parseFloat(zl[1])-parseFloat(zl[0])
-                    };
-                    i+=3;
-                } else if(line.includes('ITEM: ATOMS')) {
-                    inAtoms = true;
-                } else if(inAtoms && line.length > 0) {
-                    const p = line.split(/\s+/);
-                    if(p.length < 6) continue;
-                    const type = p[2];
-                    const x = parseFloat(p[4]);
-                    const y = parseFloat(p[5]);
-                    const z = parseFloat(p[6]);
-                    
-                    if(!frameAtoms[type]) frameAtoms[type] = [];
-                    frameAtoms[type].push({x,y,z});
-                }
-            }
-            processFrame(); // Last
-            trajectoryData.totalFrames = frame;
-        }
 
         // 2. DASHBOARD INIT
         function initDashboard() {
             document.getElementById('upload-section').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
             
+            // Populate Info
+            document.getElementById('info-frames').textContent = trajectoryData.totalFrames;
+            const sets = Object.keys(trajectoryData.sets);
+            document.getElementById('info-sets').textContent = sets.join(', ');
+
             // Populate Set Buttons
             const container = document.getElementById('set-buttons');
             container.innerHTML = '';
-            Object.keys(trajectoryData.sets).forEach(set => {
+            sets.forEach(set => {
                 const btn = document.createElement('button');
                 btn.className = 'px-3 py-1 text-[10px] font-bold uppercase rounded border border-slate-200 hover:bg-slate-100 transition-colors bg-white';
                 btn.textContent = set;
@@ -433,17 +265,17 @@
                 container.appendChild(btn);
             });
 
-            // Init Sliders
+            // Init Sliders based on Total Frames
             const maxLag = document.getElementById('maxLagSlider');
             maxLag.max = trajectoryData.totalFrames - 1;
-            maxLag.value = Math.min(100, trajectoryData.totalFrames/2);
+            maxLag.value = Math.min(100, Math.floor(trajectoryData.totalFrames/2));
             
             const fitS = document.getElementById('fitStartSlider');
             const fitE = document.getElementById('fitEndSlider');
             fitS.max = maxLag.value; 
             fitE.max = maxLag.value;
-            fitE.value = maxLag.value * 0.9;
-            fitS.value = maxLag.value * 0.1;
+            fitE.value = Math.floor(maxLag.value * 0.9);
+            fitS.value = Math.floor(maxLag.value * 0.1);
 
             // Events
             maxLag.addEventListener('input', updateAnalysis);
@@ -451,7 +283,7 @@
             fitE.addEventListener('input', updateFitCalc);
 
             // Load first set
-            if(container.children.length > 0) loadSet(Object.keys(trajectoryData.sets)[0], container.children[0]);
+            if(container.children.length > 0) loadSet(sets[0], container.children[0]);
         }
 
         function loadSet(setName, btn) {
@@ -483,17 +315,16 @@
             document.getElementById('lag-display').textContent = maxLag + ' frames';
             document.getElementById('stat-total').textContent = trajectoryData.totalFrames;
             document.getElementById('stat-lag').textContent = maxLag;
-            // Measurements at max lag = Total - maxLag
             const minMeasure = trajectoryData.totalFrames - maxLag;
-            document.getElementById('stat-measure').textContent = `Min ${minMeasure} / Max ${trajectoryData.totalFrames-1}`;
+            document.getElementById('stat-measure').textContent = `Min ${minMeasure}`;
 
             // MSD Calculation
             const msd = new Array(maxLag+1).fill(0);
             const counts = new Array(maxLag+1).fill(0);
-            const sampleTrajectories = []; // Store a few individual trajectories for visualization
+            const sampleTrajectories = []; 
             
-            // Sampling logic for individual lines (Limit to ~50 lines for performance)
-            const sampleStride = Math.max(1, Math.floor((data.length - maxLag) / 50));
+            // Sample stride for visual "faded lines" (Max ~30 lines for performance)
+            const sampleStride = Math.max(1, Math.floor((data.length - maxLag) / 30));
 
             for(let t0 = 0; t0 < data.length - 1; t0++) {
                 const r0 = data[t0];
@@ -504,6 +335,8 @@
                     if(t0 + tau >= data.length) break;
                     
                     const rt = data[t0 + tau];
+                    
+                    // Standard Euclidean Distance (No wrapping needed)
                     const d2 = (rt.x-r0.x)**2 + (rt.y-r0.y)**2 + (rt.z-r0.z)**2;
                     
                     msd[tau] += d2;
@@ -532,37 +365,41 @@
             const ctx = document.getElementById('msdChart').getContext('2d');
             if(chartInstance) chartInstance.destroy();
 
-            // Prepare Individual Datasets (Faded)
-            const datasets = individualData.map(d => ({
-                data: d,
-                type: 'line',
-                borderColor: 'rgba(148, 163, 184, 0.15)', // Very faint slate
-                borderWidth: 1,
-                pointRadius: 0,
-                fill: false,
-                tension: 0.1,
-                order: 2 // Draw behind
-            }));
+            const datasets = [];
 
-            // Add Mean MSD (Bold)
+            // 1. Faded Lines (Individual measurements)
+            individualData.forEach(d => {
+                datasets.push({
+                    type: 'line',
+                    data: d,
+                    borderColor: 'rgba(148, 163, 184, 0.1)',
+                    borderWidth: 1,
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.1,
+                    order: 10
+                });
+            });
+
+            // 2. Mean MSD (Bold)
             datasets.push({
                 label: 'Mean MSD',
-                data: meanData,
                 type: 'line',
-                borderColor: '#4f46e5', // Indigo
+                data: meanData,
+                borderColor: '#4f46e5',
                 backgroundColor: '#4f46e5',
                 borderWidth: 3,
                 pointRadius: 0,
                 tension: 0.1,
-                order: 1 // Draw on top
+                order: 1
             });
 
-            // Add Fit Line (Placeholder, updated by updateFitCalc)
+            // 3. Fit Line (Placeholder)
             datasets.push({
                 label: 'Fit Line',
-                data: [],
                 type: 'line',
-                borderColor: '#f59e0b', // Amber
+                data: [],
+                borderColor: '#f59e0b',
                 borderWidth: 2,
                 borderDash: [5, 5],
                 pointRadius: 0,
@@ -570,7 +407,6 @@
             });
 
             chartInstance = new Chart(ctx, {
-                type: 'line',
                 data: { labels: labels, datasets: datasets },
                 options: {
                     responsive: true,
@@ -593,28 +429,24 @@
             const startFrame = parseInt(document.getElementById('fitStartSlider').value);
             const endFrame = parseInt(document.getElementById('fitEndSlider').value);
             
-            // Ensure Start < End
-            if(startFrame >= endFrame) return;
-
-            // UI Update
+            // Visual Update
             document.getElementById('fit-start-val').textContent = `t=${startFrame}`;
             document.getElementById('fit-end-val').textContent = `t=${endFrame}`;
             
-            // Update Range Highlight Visual
             const max = parseInt(document.getElementById('fitEndSlider').max);
             const hl = document.getElementById('fit-highlight');
             hl.style.left = (startFrame/max)*100 + '%';
             hl.style.width = ((endFrame-startFrame)/max)*100 + '%';
+            
+            if(startFrame >= endFrame) return;
 
-            // Linear Regression on Subset
+            // Simple Linear Regression
             let sumX=0, sumY=0, sumXY=0, sumXX=0, n=0;
-            
-            // Map frames to array indices (indices are frame-1 since labels start at 1)
-            // Actually labels array matches currentMeanMSD indices + 1? No.
-            // currentLabels[i] = i+1. currentMeanMSD[i] corresponds to lag i+1.
-            
-            // Find data points within range
             const fitPoints = [];
+            
+            // Note: currentLabels[i] is frame number (1, 2, 3...)
+            // currentMeanMSD[i] is MSD at that frame
+            
             for(let i=0; i<currentLabels.length; i++) {
                 const x = currentLabels[i];
                 if(x >= startFrame && x <= endFrame) {
@@ -643,51 +475,43 @@
             });
             const r2 = 1 - (ssRes/ssTot);
 
-            // Update Fit Line on Chart
+            // Update Fit Line Dataset
             const fitData = currentLabels.map(x => {
                 if(x >= startFrame && x <= endFrame) return slope*x + intercept;
                 return null;
             });
-            // Update the last dataset (Fit Line)
+            
             chartInstance.data.datasets[chartInstance.data.datasets.length-1].data = fitData;
-            chartInstance.update('none'); // No animation
+            chartInstance.update('none');
 
-            // Update Stats Card
-            // D = slope / 6 (for 3D)
+            // Stats
             const D = slope / 6;
-            // 1 A^2/ps = 1e-4 cm^2/s
-            const D_cm = D * 1e-4;
-
+            const D_cm = D * 1e-4; // Assuming 1 frame = 1ps (Standard LAMMPS)
             document.getElementById('diff-val').textContent = D.toFixed(4);
             document.getElementById('diff-cm-val').textContent = D_cm.toExponential(2) + ' cm²/s';
             document.getElementById('slope-val').textContent = slope.toFixed(3);
             document.getElementById('r2-val').textContent = r2.toFixed(3);
         }
 
-        // 6. WINDOW VISUALIZATION
+        // 6. WINDOW VIZ
         function renderWindowViz(lag, total) {
             const container = document.getElementById('window-animation-container');
             container.innerHTML = '';
-            
-            // Create 5 example windows
             const colors = ['bg-indigo-500', 'bg-indigo-400', 'bg-emerald-400', 'bg-amber-400', 'bg-rose-400'];
             for(let i=0; i<5; i++) {
                 const div = document.createElement('div');
                 div.className = `absolute h-1.5 rounded opacity-80 ${colors[i]}`;
-                // Width = (lag / total) * 100%
                 div.style.width = (lag/total)*100 + '%';
                 div.style.top = (i * 8) + 'px';
-                // Stagger start positions
+                // Stagger positions to show "sliding"
                 const maxStart = 100 - parseFloat(div.style.width);
                 const startPos = (i / 4) * maxStart; 
                 div.style.left = startPos + '%';
                 container.appendChild(div);
             }
         }
-
-        // Trigger mathjax
+        
         if(window.MathJax) MathJax.typeset();
-
     </script>
 </body>
 </html>
