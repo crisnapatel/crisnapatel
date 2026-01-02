@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einstein MSD Tutorial: Polymer Dynamics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel { background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .chart-wrapper { position: relative; height: 450px; width: 100%; }
+        
+        /* Loaders and Sliders */
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #4f46e5; cursor: pointer; margin-top: -7px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); border: 2px solid white; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #cbd5e1; border-radius: 2px; }
+        input[type=range]:focus { outline: none; }
+
+        .range-group input[type=range] { pointer-events: none; position: absolute; height: 0; width: 100%; outline: none; }
+        .range-group input[type=range]::-webkit-slider-thumb { pointer-events: all; position: relative; z-index: 10; outline: 0; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-indigo-500 rounded flex items-center justify-center font-bold text-lg">D</div>
+                <h1 class="text-lg font-bold tracking-tight">Einstein MSD <span class="text-indigo-400">Analysis Lab</span></h1>
+            </div>
+            <div class="text-xs font-mono bg-slate-800 px-3 py-1 rounded border border-slate-700">
+                Data: Trajectory .lammpstrj
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-8 space-y-12">
+
+        <!-- 1. DATA LOADING SECTION -->
+        <section id="upload-section" class="glass-panel p-12 text-center transition-all duration-500">
+            <div class="max-w-xl mx-auto space-y-6">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-2xl">📊</div>
+                <h2 class="text-2xl font-bold text-slate-900">Loading Trajectory Data</h2>
+                <p class="text-slate-600">
+                    Parsing <code>trajectory_sets_1_10_10000.lammpstrj</code><br>
+                    <span class="text-xs text-slate-400">Calculating Chain Center-of-Mass (COM) and Unwrapping Coordinates...</span>
+                </p>
+
+                <div id="loading" class="flex flex-col items-center gap-3 mt-4">
+                    <div class="loader"></div>
+                    <span class="text-sm font-bold text-indigo-600">Processing <span id="progress-text">0%</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ANALYSIS DASHBOARD (Hidden until loaded) -->
+        <div id="dashboard" class="hidden space-y-10">
+            
+            <!-- A. THEORY & CONCEPT LAB -->
+            <section class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- Theory: COM & Unwrapping -->
+                <div class="glass-panel p-6 border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">A</span> 
+                        Step 1: Center of Mass & Unwrapping
+                    </h3>
+                    
+                    <div class="flex gap-6">
+                        <!-- Canvas Visualization -->
+                        <div class="relative w-40 h-40 bg-slate-50 border border-slate-200 rounded flex-shrink-0">
+                            <canvas id="polyCanvas" width="160" height="160"></canvas>
+                            <div class="absolute bottom-1 right-1 text-[10px] text-slate-400">Chain Viz</div>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm text-slate-600">
+                            <p>
+                                <strong>Why COM?</strong> A polymer chain wiggles (Rouse modes). If we track individual atoms, this wiggling looks like diffusion at short times ($t^{0.5}$). Calculating the <span class="text-rose-600 font-bold">Center of Mass (Red Dot)</span> filters this noise, isolating the chain's net motion.
+                            </p>
+                            <p>
+                                <strong>Why Unwrap?</strong> In MD, atoms warp across periodic boundaries (Pac-man style). We must "unwrap" these jumps to get a continuous trajectory $r(t)$ for calculating displacement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theory: Sliding Window -->
+                <div class="glass-panel p-6 border-l-4 border-emerald-500">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs">B</span>
+                        Step 2: The Sliding Window Algorithm
+                    </h3>
+                    
+                    <p class="text-xs text-slate-600 mb-4">
+                        To extract maximum data from a single trajectory, we calculate displacement starting from <em>every possible time origin</em> $t_0$.
+                    </p>
+
+                    <!-- Algorithm Viz -->
+                    <div class="relative bg-slate-100 h-24 rounded border border-slate-200 overflow-hidden">
+                        <div class="absolute top-2 left-2 text-[10px] text-slate-400 font-mono">TIMELINE (Total Frames)</div>
+                        
+                        <!-- Base Timeline -->
+                        <div class="absolute top-8 left-4 right-4 h-2 bg-slate-300 rounded"></div>
+                        
+                        <!-- Moving Windows (Animated via CSS) -->
+                        <div id="window-animation-container" class="absolute inset-0 top-6">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 flex justify-between items-center text-xs">
+                        <span class="text-slate-500">Formula: $MSD(\tau) = \frac{1}{N} \sum_{i=1}^{N} |r(t_i + \tau) - r(t_i)|^2$</span>
+                        <span class="font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">N = Total - Lag</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- B. MAIN CONTROLS & CHART -->
+            <section class="glass-panel p-6 bg-slate-50">
+                <!-- Controls Row -->
+                <div class="flex flex-wrap gap-6 items-end justify-between mb-6 border-b border-slate-200 pb-6">
+                    
+                    <!-- 1. Select Set -->
+                    <div class="w-full md:w-auto">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Target Polymer</label>
+                        <div class="flex gap-2" id="set-buttons">
+                            <!-- JS Injected -->
+                        </div>
+                    </div>
+
+                    <!-- 2. Max Lag Slider -->
+                    <div class="w-full md:w-64">
+                        <label class="flex justify-between text-[10px] font-bold text-slate-500 uppercase mb-2">
+                            <span>Max Lag Time ($\tau_{max}$)</span>
+                            <span id="lag-display" class="text-indigo-600">--</span>
+                        </label>
+                        <input type="range" id="maxLagSlider" min="10" max="1000" value="100" class="w-full">
+                        <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                            <span>Short (Clean)</span>
+                            <span>Long (Noisy)</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Fit Range Sliders -->
+                    <div class="w-full md:w-64 relative">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Linear Fit Range</label>
+                        <div class="relative h-6 range-group">
+                            <div class="absolute top-2 left-0 right-0 h-1 bg-slate-300 rounded"></div>
+                            <div id="fit-highlight" class="absolute top-2 h-1 bg-amber-400 rounded pointer-events-none"></div>
+                            <input type="range" id="fitStartSlider" min="0" max="100" value="10">
+                            <input type="range" id="fitEndSlider" min="0" max="100" value="90">
+                        </div>
+                        <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                            <span id="fit-start-val">t=10</span>
+                            <span id="fit-end-val">t=90</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Main Chart Area -->
+                <div class="grid lg:grid-cols-4 gap-6">
+                    
+                    <!-- Chart -->
+                    <div class="lg:col-span-3">
+                        <div class="chart-wrapper">
+                            <canvas id="msdChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Results Card -->
+                    <div class="lg:col-span-1 space-y-4">
+                        <!-- Diffusivity Result -->
+                        <div class="bg-slate-900 text-white p-5 rounded-xl shadow-lg">
+                            <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Calculated Diffusivity ($D$)</h4>
+                            <div class="flex items-baseline gap-1">
+                                <span id="diff-val" class="text-2xl font-bold text-emerald-400">--</span>
+                                <span class="text-xs text-slate-400">Å²/ps</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-700 flex flex-col gap-1">
+                                <span class="text-xs text-slate-300" id="diff-cm-val">-- cm²/s</span>
+                                <span class="text-[10px] text-slate-500">Slope: <span id="slope-val" class="font-mono">--</span></span>
+                                <span class="text-[10px] text-slate-500">Fit $R^2$: <span id="r2-val" class="font-mono text-amber-400">--</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Stats Box -->
+                        <div class="bg-white border border-slate-200 p-4 rounded-xl">
+                            <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-2">Statistics</h4>
+                            <div class="text-xs space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-600">Total Frames:</span>
+                                    <span id="stat-total" class="font-mono font-bold">--</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-600">Lag $\tau$:</span>
+                                    <span id="stat-lag" class="font-mono font-bold">--</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-600">Measurements:</span>
+                                    <span id="stat-measure" class="font-mono font-bold text-emerald-600">--</span>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-slate-400 mt-3 leading-tight italic">
+                                The faint grey lines in the plot represent individual measurement windows. The blue line is their average.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // --- VISUALIZATION: POLYMER CANVAS ---
+        const canvas = document.getElementById('polyCanvas');
+        const ctxViz = canvas.getContext('2d');
+        let particles = [];
+        
+        // Create random chain
+        function initChain() {
+            particles = [];
+            let x = 80, y = 80;
+            for(let i=0; i<15; i++) {
+                particles.push({x, y});
+                x += (Math.random()-0.5)*30;
+                y += (Math.random()-0.5)*30;
+            }
+        }
+        initChain();
+
+        function animateChain() {
+            ctxViz.clearRect(0, 0, 160, 160);
+            
+            // Jiggle
+            let cx=0, cy=0;
+            ctxViz.beginPath();
+            particles.forEach((p, i) => {
+                p.x += (Math.random()-0.5)*1;
+                p.y += (Math.random()-0.5)*1;
+                cx+=p.x; cy+=p.y;
+                
+                if(i===0) ctxViz.moveTo(p.x, p.y);
+                else ctxViz.lineTo(p.x, p.y);
+            });
+            ctxViz.strokeStyle = '#94a3b8';
+            ctxViz.lineWidth = 2;
+            ctxViz.stroke();
+
+            // Draw atoms
+            particles.forEach(p => {
+                ctxViz.beginPath();
+                ctxViz.arc(p.x, p.y, 3, 0, Math.PI*2);
+                ctxViz.fillStyle = '#64748b';
+                ctxViz.fill();
+            });
+
+            // Draw COM
+            cx /= particles.length;
+            cy /= particles.length;
+            
+            ctxViz.beginPath();
+            ctxViz.arc(cx, cy, 5, 0, Math.PI*2);
+            ctxViz.fillStyle = '#e11d48'; // Red
+            ctxViz.fill();
+            ctxViz.strokeStyle = 'white';
+            ctxViz.lineWidth = 2;
+            ctxViz.stroke();
+            
+            requestAnimationFrame(animateChain);
+        }
+        animateChain();
+
+
+        // --- MAIN APPLICATION LOGIC ---
+
+        let trajectoryData = { boxSize: {x:0,y:0,z:0}, totalFrames: 0, sets: {} };
+        let currentSet = null;
+        let chartInstance = null;
+
+        // 1. AUTO-LOAD TRAJECTORY FILE
+        window.addEventListener('DOMContentLoaded', function() {
+            const trajectoryFile = '../data/concepts/trajectory_sets_1_10_10000.lammpstrj';
+            
+            document.getElementById('progress-text').textContent = 'Loading file...';
+            
+            fetch(trajectoryFile)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load trajectory file');
+                    
+                    const contentLength = response.headers.get('Content-Length');
+                    if (!contentLength) {
+                        return response.text();
+                    }
+                    
+                    // Track download progress
+                    const total = parseInt(contentLength, 10);
+                    let loaded = 0;
+                    
+                    const reader = response.body.getReader();
+                    const stream = new ReadableStream({
+                        start(controller) {
+                            function push() {
+                                reader.read().then(({ done, value }) => {
+                                    if (done) {
+                                        controller.close();
+                                        return;
+                                    }
+                                    loaded += value.byteLength;
+                                    document.getElementById('progress-text').textContent = 
+                                        Math.round((loaded / total) * 100) + '% downloaded';
+                                    controller.enqueue(value);
+                                    push();
+                                });
+                            }
+                            push();
+                        }
+                    });
+                    
+                    return new Response(stream).text();
+                })
+                .then(text => {
+                    document.getElementById('progress-text').textContent = 'Parsing data...';
+                    parseLammpstrj(text);
+                    initDashboard();
+                })
+                .catch(error => {
+                    console.error('Error loading trajectory:', error);
+                    document.getElementById('loading').innerHTML = 
+                        '<div class="text-red-600 font-semibold">❌ Error loading trajectory file. Please check console.</div>';
+                });
+        });
+
+        function parseLammpstrj(text) {
+            const lines = text.split('\n');
+            let frame = 0;
+            let inAtoms = false;
+            let frameAtoms = {};
+            
+            // Reset
+            trajectoryData = { boxSize: {x:0,y:0,z:0}, totalFrames: 0, sets: {} };
+
+            // Process Frame Helper
+            const processFrame = () => {
+                if(frame === 0) return;
+                
+                for(const [setName, atoms] of Object.entries(frameAtoms)) {
+                    if(!trajectoryData.sets[setName]) trajectoryData.sets[setName] = [];
+                    
+                    // Calc COM
+                    let sx=0, sy=0, sz=0;
+                    atoms.forEach(a => { sx+=a.x; sy+=a.y; sz+=a.z; });
+                    let com = { x: sx/atoms.length, y: sy/atoms.length, z: sz/atoms.length };
+                    
+                    // Unwrap
+                    if(trajectoryData.sets[setName].length > 0) {
+                        const prev = trajectoryData.sets[setName][trajectoryData.sets[setName].length - 1];
+                        const L = trajectoryData.boxSize;
+                        
+                        let dx = com.x - prev.x;
+                        let dy = com.y - prev.y;
+                        let dz = com.z - prev.z;
+
+                        if(dx > L.x/2) com.x -= L.x; else if(dx < -L.x/2) com.x += L.x;
+                        if(dy > L.y/2) com.y -= L.y; else if(dy < -L.y/2) com.y += L.y;
+                        if(dz > L.z/2) com.z -= L.z; else if(dz < -L.z/2) com.z += L.z;
+                    }
+                    trajectoryData.sets[setName].push(com);
+                }
+                frameAtoms = {};
+            };
+
+            for(let i=0; i<lines.length; i++) {
+                const line = lines[i].trim();
+                if(line.includes('ITEM: TIMESTEP')) {
+                    if(frame>0) processFrame();
+                    frame++;
+                    inAtoms = false;
+                } else if(line.includes('ITEM: BOX BOUNDS')) {
+                    const xl = lines[i+1].trim().split(/\s+/);
+                    const yl = lines[i+2].trim().split(/\s+/);
+                    const zl = lines[i+3].trim().split(/\s+/);
+                    trajectoryData.boxSize = {
+                        x: parseFloat(xl[1])-parseFloat(xl[0]),
+                        y: parseFloat(yl[1])-parseFloat(yl[0]),
+                        z: parseFloat(zl[1])-parseFloat(zl[0])
+                    };
+                    i+=3;
+                } else if(line.includes('ITEM: ATOMS')) {
+                    inAtoms = true;
+                } else if(inAtoms && line.length > 0) {
+                    const p = line.split(/\s+/);
+                    if(p.length < 6) continue;
+                    const type = p[2];
+                    const x = parseFloat(p[4]);
+                    const y = parseFloat(p[5]);
+                    const z = parseFloat(p[6]);
+                    
+                    if(!frameAtoms[type]) frameAtoms[type] = [];
+                    frameAtoms[type].push({x,y,z});
+                }
+            }
+            processFrame(); // Last
+            trajectoryData.totalFrames = frame;
+        }
+
+        // 2. DASHBOARD INIT
+        function initDashboard() {
+            document.getElementById('upload-section').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            
+            // Populate Set Buttons
+            const container = document.getElementById('set-buttons');
+            container.innerHTML = '';
+            Object.keys(trajectoryData.sets).forEach(set => {
+                const btn = document.createElement('button');
+                btn.className = 'px-3 py-1 text-[10px] font-bold uppercase rounded border border-slate-200 hover:bg-slate-100 transition-colors bg-white';
+                btn.textContent = set;
+                btn.onclick = () => loadSet(set, btn);
+                container.appendChild(btn);
+            });
+
+            // Init Sliders
+            const maxLag = document.getElementById('maxLagSlider');
+            maxLag.max = trajectoryData.totalFrames - 1;
+            maxLag.value = Math.min(100, trajectoryData.totalFrames/2);
+            
+            const fitS = document.getElementById('fitStartSlider');
+            const fitE = document.getElementById('fitEndSlider');
+            fitS.max = maxLag.value; 
+            fitE.max = maxLag.value;
+            fitE.value = maxLag.value * 0.9;
+            fitS.value = maxLag.value * 0.1;
+
+            // Events
+            maxLag.addEventListener('input', updateAnalysis);
+            fitS.addEventListener('input', updateFitCalc);
+            fitE.addEventListener('input', updateFitCalc);
+
+            // Load first set
+            if(container.children.length > 0) loadSet(Object.keys(trajectoryData.sets)[0], container.children[0]);
+        }
+
+        function loadSet(setName, btn) {
+            currentSet = setName;
+            // Style active button
+            Array.from(document.getElementById('set-buttons').children).forEach(b => {
+                b.className = 'px-3 py-1 text-[10px] font-bold uppercase rounded border border-slate-200 bg-white text-slate-500';
+            });
+            btn.className = 'px-3 py-1 text-[10px] font-bold uppercase rounded bg-indigo-600 text-white shadow';
+            
+            updateAnalysis();
+        }
+
+        // 3. ANALYSIS CORE
+        let currentMeanMSD = [];
+        let currentLabels = [];
+
+        function updateAnalysis() {
+            if(!currentSet) return;
+            
+            const maxLag = parseInt(document.getElementById('maxLagSlider').value);
+            const data = trajectoryData.sets[currentSet];
+            
+            // Update Fit Slider Max
+            document.getElementById('fitStartSlider').max = maxLag;
+            document.getElementById('fitEndSlider').max = maxLag;
+            
+            // UI Updates
+            document.getElementById('lag-display').textContent = maxLag + ' frames';
+            document.getElementById('stat-total').textContent = trajectoryData.totalFrames;
+            document.getElementById('stat-lag').textContent = maxLag;
+            // Measurements at max lag = Total - maxLag
+            const minMeasure = trajectoryData.totalFrames - maxLag;
+            document.getElementById('stat-measure').textContent = `Min ${minMeasure} / Max ${trajectoryData.totalFrames-1}`;
+
+            // MSD Calculation
+            const msd = new Array(maxLag+1).fill(0);
+            const counts = new Array(maxLag+1).fill(0);
+            const sampleTrajectories = []; // Store a few individual trajectories for visualization
+            
+            // Sampling logic for individual lines (Limit to ~50 lines for performance)
+            const sampleStride = Math.max(1, Math.floor((data.length - maxLag) / 50));
+
+            for(let t0 = 0; t0 < data.length - 1; t0++) {
+                const r0 = data[t0];
+                const isSample = (t0 % sampleStride === 0);
+                let sampleTraj = isSample ? [] : null;
+
+                for(let tau = 1; tau <= maxLag; tau++) {
+                    if(t0 + tau >= data.length) break;
+                    
+                    const rt = data[t0 + tau];
+                    const d2 = (rt.x-r0.x)**2 + (rt.y-r0.y)**2 + (rt.z-r0.z)**2;
+                    
+                    msd[tau] += d2;
+                    counts[tau]++;
+                    
+                    if(isSample) sampleTraj.push({x: tau, y: d2});
+                }
+                if(isSample && sampleTraj.length > 0) sampleTrajectories.push(sampleTraj);
+            }
+
+            // Average
+            currentMeanMSD = [];
+            currentLabels = [];
+            for(let i=1; i<=maxLag; i++) {
+                currentMeanMSD.push(msd[i] / counts[i]);
+                currentLabels.push(i);
+            }
+
+            renderChart(currentLabels, currentMeanMSD, sampleTrajectories);
+            updateFitCalc();
+            renderWindowViz(maxLag, trajectoryData.totalFrames);
+        }
+
+        // 4. CHART RENDERING
+        function renderChart(labels, meanData, individualData) {
+            const ctx = document.getElementById('msdChart').getContext('2d');
+            if(chartInstance) chartInstance.destroy();
+
+            // Prepare Individual Datasets (Faded)
+            const datasets = individualData.map(d => ({
+                data: d,
+                type: 'line',
+                borderColor: 'rgba(148, 163, 184, 0.15)', // Very faint slate
+                borderWidth: 1,
+                pointRadius: 0,
+                fill: false,
+                tension: 0.1,
+                order: 2 // Draw behind
+            }));
+
+            // Add Mean MSD (Bold)
+            datasets.push({
+                label: 'Mean MSD',
+                data: meanData,
+                type: 'line',
+                borderColor: '#4f46e5', // Indigo
+                backgroundColor: '#4f46e5',
+                borderWidth: 3,
+                pointRadius: 0,
+                tension: 0.1,
+                order: 1 // Draw on top
+            });
+
+            // Add Fit Line (Placeholder, updated by updateFitCalc)
+            datasets.push({
+                label: 'Fit Line',
+                data: [],
+                type: 'line',
+                borderColor: '#f59e0b', // Amber
+                borderWidth: 2,
+                borderDash: [5, 5],
+                pointRadius: 0,
+                order: 0
+            });
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: { labels: labels, datasets: datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false,
+                    interaction: { mode: 'nearest', intersect: false },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { type: 'linear', title: {display:true, text:'Lag Time (ps)'} },
+                        y: { type: 'linear', title: {display:true, text:'MSD (Å²)'} }
+                    }
+                }
+            });
+        }
+
+        // 5. FIT CALCULATION
+        function updateFitCalc() {
+            if(!currentMeanMSD.length) return;
+            
+            const startFrame = parseInt(document.getElementById('fitStartSlider').value);
+            const endFrame = parseInt(document.getElementById('fitEndSlider').value);
+            
+            // Ensure Start < End
+            if(startFrame >= endFrame) return;
+
+            // UI Update
+            document.getElementById('fit-start-val').textContent = `t=${startFrame}`;
+            document.getElementById('fit-end-val').textContent = `t=${endFrame}`;
+            
+            // Update Range Highlight Visual
+            const max = parseInt(document.getElementById('fitEndSlider').max);
+            const hl = document.getElementById('fit-highlight');
+            hl.style.left = (startFrame/max)*100 + '%';
+            hl.style.width = ((endFrame-startFrame)/max)*100 + '%';
+
+            // Linear Regression on Subset
+            let sumX=0, sumY=0, sumXY=0, sumXX=0, n=0;
+            
+            // Map frames to array indices (indices are frame-1 since labels start at 1)
+            // Actually labels array matches currentMeanMSD indices + 1? No.
+            // currentLabels[i] = i+1. currentMeanMSD[i] corresponds to lag i+1.
+            
+            // Find data points within range
+            const fitPoints = [];
+            for(let i=0; i<currentLabels.length; i++) {
+                const x = currentLabels[i];
+                if(x >= startFrame && x <= endFrame) {
+                    const y = currentMeanMSD[i];
+                    sumX += x;
+                    sumY += y;
+                    sumXY += x*y;
+                    sumXX += x*x;
+                    n++;
+                    fitPoints.push({x, y});
+                }
+            }
+            
+            if(n < 2) return;
+
+            const slope = (n*sumXY - sumX*sumY) / (n*sumXX - sumX*sumX);
+            const intercept = (sumY - slope*sumX) / n;
+
+            // R2 Calc
+            const yMean = sumY/n;
+            let ssRes=0, ssTot=0;
+            fitPoints.forEach(p => {
+                const yPred = slope*p.x + intercept;
+                ssRes += (p.y - yPred)**2;
+                ssTot += (p.y - yMean)**2;
+            });
+            const r2 = 1 - (ssRes/ssTot);
+
+            // Update Fit Line on Chart
+            const fitData = currentLabels.map(x => {
+                if(x >= startFrame && x <= endFrame) return slope*x + intercept;
+                return null;
+            });
+            // Update the last dataset (Fit Line)
+            chartInstance.data.datasets[chartInstance.data.datasets.length-1].data = fitData;
+            chartInstance.update('none'); // No animation
+
+            // Update Stats Card
+            // D = slope / 6 (for 3D)
+            const D = slope / 6;
+            // 1 A^2/ps = 1e-4 cm^2/s
+            const D_cm = D * 1e-4;
+
+            document.getElementById('diff-val').textContent = D.toFixed(4);
+            document.getElementById('diff-cm-val').textContent = D_cm.toExponential(2) + ' cm²/s';
+            document.getElementById('slope-val').textContent = slope.toFixed(3);
+            document.getElementById('r2-val').textContent = r2.toFixed(3);
+        }
+
+        // 6. WINDOW VISUALIZATION
+        function renderWindowViz(lag, total) {
+            const container = document.getElementById('window-animation-container');
+            container.innerHTML = '';
+            
+            // Create 5 example windows
+            const colors = ['bg-indigo-500', 'bg-indigo-400', 'bg-emerald-400', 'bg-amber-400', 'bg-rose-400'];
+            for(let i=0; i<5; i++) {
+                const div = document.createElement('div');
+                div.className = `absolute h-1.5 rounded opacity-80 ${colors[i]}`;
+                // Width = (lag / total) * 100%
+                div.style.width = (lag/total)*100 + '%';
+                div.style.top = (i * 8) + 'px';
+                // Stagger start positions
+                const maxStart = 100 - parseFloat(div.style.width);
+                const startPos = (i / 4) * maxStart; 
+                div.style.left = startPos + '%';
+                container.appendChild(div);
+            }
+        }
+
+        // Trigger mathjax
+        if(window.MathJax) MathJax.typeset();
+
+    </script>
+</body>
+</html>
