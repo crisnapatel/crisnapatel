@@ -608,26 +608,22 @@
             container.innerHTML = '';
             const colors = ['bg-indigo-500', 'bg-indigo-400', 'bg-emerald-400', 'bg-amber-400', 'bg-rose-400'];
             
-            // Calculate the actual usable width (accounting for padding)
-            // Timeline bar has left-4 right-4 padding = 32px total out of container width
-            const paddingPercent = 4; // Approximate left/right padding as percentage
-            
             for(let i=0; i<5; i++) {
                 const div = document.createElement('div');
                 div.className = `absolute h-1.5 rounded opacity-80 ${colors[i]}`;
                 
-                // Window width as percentage of timeline
-                const windowWidth = (lag/total) * (100 - 2*paddingPercent);
-                div.style.width = windowWidth + '%';
-                div.style.top = (i * 8 + 32) + 'px'; // Align with timeline position
+                // Window width matches lag/total ratio
+                const windowWidth = (lag/total) * 100;
+                const maxStartPos = 100 - windowWidth;
+                const startPos = (i / 4) * maxStartPos;
                 
-                // Stagger positions to show "sliding" within bounds
-                const maxStartPos = (100 - 2*paddingPercent) - windowWidth;
-                const startPos = paddingPercent + (i / 4) * maxStartPos;
+                div.style.width = windowWidth + '%';
                 div.style.left = startPos + '%';
+                div.style.top = (i * 8 + 30) + 'px'; // Position below timeline bar
                 
                 container.appendChild(div);
             }
+        }
         }
         
         if(window.MathJax) MathJax.typeset();
