@@ -1,0 +1,35 @@
+name: Update Submodule
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  # Allow manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
+
+      - name: Update submodule
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git submodule update --remote
+
+      - name: Commit and push if changes exist
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add assets/pragrammatic-interaction
+            git commit -m "chore: update Pragrammatic-Interaction submodule"
+            git push
+          fi
