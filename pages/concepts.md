@@ -42,4 +42,24 @@ A collection of interactive web-based explanations for key concepts in molecular
 
 ---
 
+## Educational Resources
+
+<div class="grid gap-6 md:grid-cols-2">
+  <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-brand">
+      <a href="https://crisnapatel.github.io/python-basics/" class="hover:underline">
+        Computational Techniques — Python Basics
+      </a>
+    </h3>
+    <p class="mt-2 text-sm text-slate-700">
+      A practical guide for CHL7002 students at IIT Delhi. Learn Python fundamentals including variables, data types, control flow, functions, NumPy, Pandas, and how to read and fix common errors.
+    </p>
+    <p class="mt-3 text-xs text-slate-500 italic">
+      Course: CHL7002 Computational Techniques for Chemical Engineers
+    </p>
+  </article>
+</div>
+
+---
+
 More concepts coming soon...
