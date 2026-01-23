@@ -7,11 +7,9 @@ subtitle: "Curated selection of journal articles, conference papers, and talks."
 ---
 > **Note:** Entries below summarise currently shareable work. 
 
-## Journal manuscripts in preparation
-- Hydrogen adsorption on functionalized graphene/CNT heterostructures.
-
-## Journal manuscripts under review
-- **Krishna Patel** and J. Sarkar, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling*, Springer Nature (under review).
+## Publications
+- **Krishna Patel**, Bhushan Dharmadhikar, Prabir Patra, and Jayati Sarkar\*, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling*, Springer Nature. *(under review)*
+- Hydrogen adsorption on functionalized graphene/CNT heterostructures. *(in preparation)*
 
 ## Conference presentations
 
