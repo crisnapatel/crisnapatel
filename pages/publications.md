@@ -17,7 +17,7 @@ description: "Publications and presentations."
 
 - **Krishna Patel**\*, N. Singh\*, and J. Sarkar, "Simulation-based Study of Hydrogen Production and Storage," *ChemRD2 Symposium*, IIT Delhi, India, 27–28 November 2025. (Poster; \*Equal contribution)
 
-- Presented a poster on *polystyrene dimensions and diffusivity* at *Soft Matter Meet-2024*, Shiv Nadar University, Delhi NCR.
+- **Krishna Patel** and J. Sarkar, Presented a poster on *polystyrene dimensions and diffusivity* at *Soft Matter Meet-2024*, Shiv Nadar University, Delhi NCR.
 
 ---
 

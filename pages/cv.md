@@ -38,19 +38,9 @@ extra_head: |
       <h1 class="text-3xl font-semibold text-brand">Curriculum Vitae</h1>
       <p class="text-sm uppercase tracking-widest text-muted">{{ site.role_line }}</p>
       <p class="text-base text-slate-600">
-        Krishna Kumar Patel — molecular simulation researcher specializing in carbonaceous materials, polymer–solvent systems, and hydrogen storage.
+        Atomic scale simulation of carbonaceous materials, polymer–solvent systems, and hydrogen storage.
       </p>
     </div>
-    <a
-      class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white shadow transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2"
-      href="{{ '/assets/cv.pdf' | relative_url }}"
-    >
-      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5A2.25 2.25 0 005.25 10.5v9A2.25 2.25 0 007.5 21.75h9a2.25 2.25 0 002.25-2.25v-9A2.25 2.25 0 0016.5 8.25H15" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l3 3 3-3m-3 3V2.25" />
-      </svg>
-      Download PDF
-    </a>
   </div>
 
   <section>

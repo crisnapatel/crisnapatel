@@ -31,15 +31,15 @@ permalink: /
   <h2 class="text-2xl font-semibold text-brand">Recent highlights</h2>
   <div class="grid gap-6 md:grid-cols-2">
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-brand">Hydrogen storage on modified graphene and CNTs</h3>
+      <h3 class="text-xl font-semibold text-brand">CompFlu 2025 — IISc Bangalore</h3>
       <p class="mt-2 text-slate-700">
-        Exploring how GO sheet size and oxidation ratio change adsorption capacity of GO using grand canonical Monte Carlo insertion & classical molecular dynamics simulation with LAMMPS.
+        Presented flash talk and poster on "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene" at the Annual International Meeting on Complex Fluids and Soft Matter, December 2025.
       </p>
     </article>
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-brand">Polystyrene oligomers in toluene</h3>
+      <h3 class="text-xl font-semibold text-brand">Hydrogen storage on modified graphene and CNTs</h3>
       <p class="mt-2 text-slate-700">
-        Studying chain dimensions and diffusivity in the presence of graphene interfaces using Materials Studio.
+        Exploring how GO sheet size and oxidation ratio change adsorption capacity using grand canonical Monte Carlo & classical molecular dynamics simulation with LAMMPS.
       </p>
     </article>
   </div>
