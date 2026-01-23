@@ -31,7 +31,7 @@ permalink: /
   <h2 class="text-2xl font-semibold text-brand">Recent highlights</h2>
   <div class="grid gap-6 md:grid-cols-2">
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-brand">CompFlu 2025 — IISc Bangalore</h3>
+      <h3 class="text-xl font-semibold text-brand">CompFlu 2025 (IISc Bangalore)</h3>
       <p class="mt-2 text-slate-700">
         Presented flash talk and poster on "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene" at the Annual International Meeting on Complex Fluids and Soft Matter, December 2025.
       </p>
