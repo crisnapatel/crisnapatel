@@ -3,9 +3,7 @@ layout: page
 title: Publications
 permalink: /publications/
 description: "Publications and presentations."
-subtitle: "Curated selection of journal articles, conference papers, and talks."
 ---
-> **Note:** Entries below summarise currently shareable work. 
 
 ## Publications
 - **Krishna Patel**, Bhushan Dharmadhikar, Prabir Patra, and Jayati Sarkar\*, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling*, Springer Nature. *(under review)*
@@ -13,17 +11,13 @@ subtitle: "Curated selection of journal articles, conference papers, and talks."
 
 ## Conference presentations
 
-### 2025
+- **Krishna Patel** and J. Sarkar, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *CompFlu 2025*, J. N. Tata Auditorium, IISc Bangalore, India, 13–17 December 2025. (Flash talk & Poster)
 
-- **Krishna Patel** and J. Sarkar, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *CompFlu 2025: Annual International Meeting on Complex Fluids and Soft Matter in India*, J. N. Tata Auditorium, Indian Institute of Science (IISc), Bangalore, India, 13–17 December 2025. (Flash talk & Poster)
+- **Krishna Patel** and J. Sarkar, Poster presentation at *ICTN-KLC 2025*, IIT Delhi, India, 11–13 December 2025.
 
-- **Krishna Patel** and J. Sarkar, Poster presentation at *3rd International Conference on Thin Films and Nanotechnology—Knowledge, Leadership and Commercialization (ICTN-KLC 2025)*, IIT Delhi, India, 11–13 December 2025.
+- **Krishna Patel**\*, N. Singh\*, and J. Sarkar, "Simulation-based Study of Hydrogen Production and Storage," *ChemRD2 Symposium*, IIT Delhi, India, 27–28 November 2025. (Poster; \*Equal contribution)
 
-- **Krishna Patel**\*, N. Singh\*, and J. Sarkar, "Simulation-based Study of Hydrogen Production and Storage," *ChemRD2 Symposium*, Department of Chemical Engineering, IIT Delhi, India, 27–28 November 2025. (Poster; \*Equal contribution)
-
-### 2024
-
-- Presented a poster on *polystyrene dimensions and diffusivity* at Soft Matter Meet-2024 organised by School of Natural Sciences at Shiv Nadar University, Delhi NCR.
+- Presented a poster on *polystyrene dimensions and diffusivity* at *Soft Matter Meet-2024*, Shiv Nadar University, Delhi NCR.
 
 ---
 
