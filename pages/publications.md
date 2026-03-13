@@ -6,8 +6,8 @@ description: "Publications and presentations."
 ---
 
 ## Publications
-- **Krishna Patel**, Bhushan Dharmadhikar, Prabir Patra, and Jayati Sarkar\*, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling*, Springer Nature. *(under review)*
-- Hydrogen adsorption on functionalized graphene/CNT heterostructures. *(in preparation)*
+- **Krishna Patel**, Bhushan Dharmadhikar, Prabir Patra, and Jayati Sarkar\*, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling*, Springer Nature. *https://rdcu.be/e4xyi*
+- Hydrogen adsorption on functionalized graphene/CNT heterostructures. *(final stages)*
 
 ## Conference presentations
 
