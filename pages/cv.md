@@ -96,7 +96,7 @@ extra_head: |
       <li>Simulation software: LAMMPS, Materials Studio, GROMACS, NAMD</li>
       <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, Matplotlib</li>
       <li>Programming: Python (NumPy, pandas), Bash; C++</li>
-      <li>ML &amp; potentials: PyTorch, DeepMD-kit, training/validation pipelines</li>
+      <li>HPC environment</li>
       </ul>
   </div>
 </section>
