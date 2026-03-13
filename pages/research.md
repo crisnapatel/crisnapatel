@@ -35,7 +35,6 @@ My research explores how atomic/molecular interactions drive macroscale properti
       <li>Simulation software: LAMMPS, Materials Studio (Forcite), GROMACS, NAMD</li>
       <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, Matplotlib</li>
       <li>Programming: Python (NumPy, pandas), Bash, C++, High-Performance Computing</li>
-      <li>ML &amp; potentials: PyTorch, DeepMD-kit, training/validation pipelines</li>
       <li>Experiment related: 3D Printing, Spin coating</li>
       </ul>
   </div>

@@ -9,9 +9,10 @@ permalink: /
     <p class="text-sm font-semibold uppercase tracking-widest text-muted">PhD Student · Department of Chemical Engineering · IIT Delhi</p>
     <h1 class="text-4xl font-semibold text-brand">Hi, I'm Krishna Patel.</h1>
     <p class="text-slate-700">
-      I use atomic scale simulation to sudy hydrogen storage in various carbon-based materials.
-      My current work focuses on hydrogen storage in Graphene Oxide and Graphene-CNT pillared framework materials.
+      I use atomic-scale simulations to study hydrogen storage in carbon-based materials.
+      My current work focuses on graphene oxide and graphene-CNT pillared frameworks.
     </p>
+    <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">Knack for breaking things (and fixing them)</p>
     <div class="flex flex-wrap gap-3">
       <a class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/assets/cv.pdf' | relative_url }}">
         Download CV
@@ -71,6 +72,10 @@ permalink: /
     <div>
       <h3 class="font-semibold text-brand">Others</h3>
       <p>Conda, Docker, Jekyll, GitHub Pages, HPC (MPI/CUDA builds)</p>
+    </div>
+    <div>
+      <h3 class="font-semibold text-brand">Currently learning</h3>
+      <p>Data structures and algorithms (DSA)</p>
     </div>
   </div>
 </section>
