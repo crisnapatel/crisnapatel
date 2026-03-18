@@ -75,6 +75,33 @@ extra_head: |
         </div>
       </li>
     </ol>
+</section>
+
+  <section>
+    <h2 class="text-2xl font-semibold text-brand">Selected Research Experience</h2>
+    <ol class="mt-6 space-y-6">
+      <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2025 – Present</div>
+        <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-brand">Hydrogen Storage in Graphene and Graphene–CNT Frameworks</h3>
+          <p class="text-sm text-slate-600">Design and analysis of carbon-based architectures for hydrogen storage using atomistic simulation workflows in LAMMPS.</p>
+        </div>
+      </li>
+      <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2022 – 2025</div>
+        <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-brand">Graphene Effects on Atactic Polystyrene in Toluene</h3>
+          <p class="text-sm text-slate-600">Study of structural and dynamical changes in polymer solution behavior near graphene, including chain metrics and transport observables.</p>
+        </div>
+      </li>
+      <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2020 – 2021</div>
+        <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-brand">Self-Assembly of Binary Hard Disks via Event-Driven Molecular Dynamics</h3>
+          <p class="text-sm text-slate-600">M.Tech thesis work on self-assembly behavior in binary hard-disk systems using event-driven molecular dynamics.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
 <section class="mt-12 grid gap-6 md:grid-cols-2">

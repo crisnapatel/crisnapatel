@@ -7,10 +7,11 @@ subtitle: "Molecular simulations for energy storage and soft matter."
 ---
 ## Research snapshot
 My research explores how atomic/molecular interactions drive macroscale properties in soft matter systems and advanced carbon materials.
-- Molecular dynamics simulations of polymers and carbon materials
-- Hydrogen storage on graphene and carbon based systems
+- Molecular dynamics simulations of polymers and carbon materials (2022--2025: graphene effects on atactic polystyrene in toluene)
+- Hydrogen storage on graphene and carbon based systems (2025--present: graphene and graphene--CNT frameworks)
 - Force-field validation (ReaxFF, AIREBO) with stress–strain characterization
 - Adsorption energetics, gravimetric and volumetric capacity calculations
+- Event-driven molecular dynamics of binary hard-disk self-assembly (2020--2021)
 
 ## Selected collaborations & support
 - Schrödinger Institute scholarship for *Molecular Modeling for Materials Science Applications: Organic Electronics* (Oct 2023).

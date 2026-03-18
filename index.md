@@ -32,9 +32,14 @@ permalink: /
   <h2 class="text-2xl font-semibold text-brand">Recent highlights</h2>
   <div class="grid gap-6 md:grid-cols-2">
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-brand">CompFlu 2025 (IISc Bangalore)</h3>
+      <h3 class="text-xl font-semibold text-brand">Recent publication</h3>
       <p class="mt-2 text-slate-700">
-        Presented flash talk and poster on "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene" at the Annual International Meeting on Complex Fluids and Soft Matter, December 2025.
+        "Effect of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene" was published in <em>Journal of Molecular Modeling</em>, 32(3), 75 (2026).
+      </p>
+      <p class="mt-3 text-sm text-slate-600">
+        <a href="https://doi.org/10.1007/s00894-026-06655-1" class="text-accent hover:underline">DOI</a>
+        ·
+        <a href="https://rdcu.be/e4xyi" class="text-accent hover:underline">Shared-access link</a>
       </p>
     </article>
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
