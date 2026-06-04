@@ -1,12 +1,12 @@
-title: "Krishna Patel — Molecular simulations"
+title: "Krishna Patel - Molecular simulations"
 name: "Krishna Kumar Patel"
 preferred_name: "Krishna Patel"
 email: "chz218339@iitd.ac.in"
-role_line: "PhD Student · Department of Chemical Engineering · IIT Delhi"
+role_line: "PhD Researcher | Department of Chemical Engineering | IIT Delhi"
 location: "Delhi, India"
 description: >-
-  Krishna Patel is a PhD candidate in Chemical Engineering at IIT Delhi focusing on molecular
-  dynamics of carbonaceous materials, polymer–solvent interactions, and hydrogen storage.
+  Krishna Patel is a PhD researcher in Chemical Engineering at IIT Delhi focusing on molecular
+  dynamics simulation of carbonaceous materials, polymer-solvent interactions, and hydrogen storage.
 url: "https://crisnapatel.github.io"
 baseurl: "/crisnapatel"
 permalink: pretty
@@ -25,7 +25,7 @@ social:
 person:
   name: "Krishna Kumar Patel"
   preferred_name: "Krishna Patel"
-  job_title: "PhD Student"
+  job_title: "PhD Researcher"
   affiliation: "Department of Chemical Engineering, Indian Institute of Technology Delhi"
   email: "chz218339@iitd.ac.in"
   location: "Delhi, India"

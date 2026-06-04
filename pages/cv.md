@@ -2,10 +2,10 @@
 layout: page
 title: null
 permalink: /cv/
-description: "Curriculum vitae of Krishna Kumar Patel, PhD student at IIT Delhi focusing on molecular simulations and hydrogen storage."
+description: "Curriculum vitae of Krishna Kumar Patel, PhD researcher at IIT Delhi focusing on molecular simulations and hydrogen storage."
 meta:
   title: "Krishna Kumar Patel — Curriculum Vitae"
-  description: "Education, skills, and research experience of Krishna Patel, PhD student in Chemical Engineering at IIT Delhi."
+  description: "Education, skills, and research experience of Krishna Patel, PhD researcher in Chemical Engineering at IIT Delhi."
 extra_head: |
   <style>
     @media print {
@@ -38,7 +38,7 @@ extra_head: |
       <h1 class="text-3xl font-semibold text-brand">Curriculum Vitae</h1>
       <p class="text-sm uppercase tracking-widest text-muted">{{ site.role_line }}</p>
       <p class="text-base text-slate-600">
-        Atomic scale simulation of carbonaceous materials, polymer–solvent systems, and hydrogen storage.
+        Molecular dynamics simulation of carbonaceous materials, polymer-solvent systems, and hydrogen storage.
       </p>
     </div>
   </div>
@@ -52,7 +52,8 @@ extra_head: |
           <h3 class="text-xl font-semibold text-brand">Doctor of Philosophy (PhD), Chemical Engineering</h3>
           <p class="text-sm font-medium text-slate-600">Indian Institute of Technology Delhi, India</p>
           <p class="text-sm text-slate-600">Thesis Advisor: Prof. Jayati Sarkar</p>
-          <p class="text-sm text-slate-600">Focus: nanoscale simulations, hydrogen storage, carbonaceous materials.</p>
+          <p class="text-sm text-slate-600">Thesis: Molecular Dynamics Simulation of Carbonaceous Materials.</p>
+          <p class="text-sm text-slate-600">Focus: nanoscale simulation, hydrogen storage, carbonaceous materials, and graphene-CNT frameworks.</p>
         </div>
       </li>
       <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
@@ -83,8 +84,8 @@ extra_head: |
       <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
         <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2025 – Present</div>
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 class="text-xl font-semibold text-brand">Hydrogen Storage in Graphene and Graphene–CNT Frameworks</h3>
-          <p class="text-sm text-slate-600">Design and analysis of carbon-based architectures for hydrogen storage using atomistic simulation workflows in LAMMPS.</p>
+          <h3 class="text-xl font-semibold text-brand">Hydrogen Storage in Graphene and Graphene-CNT Frameworks</h3>
+          <p class="text-sm text-slate-600">Design and analysis of carbon-based architectures for hydrogen storage using atomistic simulation workflows in LAMMPS, with emphasis on junction topology, pillar density, and accessible interlayer volume.</p>
         </div>
       </li>
       <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
@@ -109,10 +110,10 @@ extra_head: |
     <h3 class="text-xl font-semibold text-brand border-b pb-2">Research Skills</h3>
     <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
       <li>Classical atomistic molecular dynamics</li>
-      <li>Reactive and empirical force fields (ReaxFF, AIREBO, COMPASS)</li>
+      <li>Reactive and empirical force fields: AIREBO/AIREBO-M, ReaxFF, COMPASS</li>
       <li>Grand canonical Monte Carlo (fix gcmc) and adsorption workflows</li>
       <li>Polymer chain metrics and transport: R<sub>g</sub>, end-to-end, MSD, diffusivity</li>
-      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics</li>
+      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics, site-resolved uptake</li>
       </ul>
   </div>
 
@@ -120,10 +121,10 @@ extra_head: |
     <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
     <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
       <li>OS: Linux, macOS, Windows</li>
-      <li>Simulation software: LAMMPS, Materials Studio, GROMACS, NAMD</li>
-      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, Matplotlib</li>
-      <li>Programming: Python (NumPy, pandas), Bash; C++</li>
-      <li>HPC environment</li>
+      <li>Simulation software: LAMMPS, DeePMD/DPGen, Quantum Espresso, VASP, Materials Studio, GROMACS, NAMD</li>
+      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, NumPy, pandas, Matplotlib</li>
+      <li>Programming: Python, Bash, C++</li>
+      <li>Linux/HPC environments, MPI/CUDA-oriented builds, and GPU workstation workflows</li>
       </ul>
   </div>
 </section>

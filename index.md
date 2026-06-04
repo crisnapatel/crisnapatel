@@ -1,24 +1,24 @@
 ---
 layout: page
 title: Home
-description: "Personal website of Krishna Patel, PhD student at IIT Delhi focusing on molecular dynamics simulations."
+description: "Personal website of Krishna Patel, PhD researcher at IIT Delhi focusing on molecular dynamics simulations."
 permalink: /
 ---
 <div class="not-prose grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
   <div class="space-y-6">
-    <p class="text-sm font-semibold uppercase tracking-widest text-muted">PhD Student · Department of Chemical Engineering · IIT Delhi</p>
+    <p class="text-sm font-semibold uppercase tracking-widest text-muted">PhD Researcher &middot; Department of Chemical Engineering &middot; IIT Delhi</p>
     <h1 class="text-4xl font-semibold text-brand">Hi, I'm Krishna Patel.</h1>
     <p class="text-slate-700">
-      I use atomic-scale simulations to study hydrogen storage in carbon-based materials.
-      My current work focuses on graphene oxide and graphene-CNT pillared frameworks.
+      I use atomistic simulation workflows to study hydrogen storage in carbonaceous materials.
+      My current work focuses on graphene, CNTs, graphene-CNT 3D frameworks, and novel 2D carbon allotropes.
     </p>
-    <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">Knack for breaking things (and fixing them)</p>
+    <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">Molecular dynamics &middot; Carbon allotropes &middot; HPC workflows</p>
     <div class="flex flex-wrap gap-3">
       <a class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/assets/cv.pdf' | relative_url }}">
         Download CV
       </a>
-      <a class="inline-flex items-center gap-2 rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10 focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/contact/' | relative_url }}">
-        Contact me
+      <a class="inline-flex items-center gap-2 rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10 focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/skills/' | relative_url }}">
+        Skills
       </a>
     </div>
   </div>
@@ -43,11 +43,29 @@ permalink: /
       </p>
     </article>
     <article class="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-brand">Hydrogen storage on modified graphene and CNTs</h3>
+      <h3 class="text-xl font-semibold text-brand">Graphene-CNT hydrogen storage</h3>
       <p class="mt-2 text-slate-700">
-        Exploring how GO sheet size and oxidation ratio change adsorption capacity using grand canonical Monte Carlo & classical molecular dynamics simulation with LAMMPS.
+        Studying how junction topology, CNT pillar density, and accessible interlayer volume affect H<sub>2</sub> uptake in graphene-CNT frameworks.
       </p>
     </article>
+  </div>
+</section>
+
+<section>
+  <h2 class="text-2xl font-semibold text-brand">Current focus</h2>
+  <div class="grid gap-4 md:grid-cols-3">
+    <div>
+      <h3 class="font-semibold text-brand">Carbon allotropes</h3>
+      <p>Graphene, CNTs, graphane, psi-graphene, phagraphene, and pillared graphene-CNT frameworks.</p>
+    </div>
+    <div>
+      <h3 class="font-semibold text-brand">Simulation stack</h3>
+      <p>LAMMPS, AIREBO/AIREBO-M, DeePMD/DPGen, Quantum Espresso, VASP, and Python-based analysis.</p>
+    </div>
+    <div>
+      <h3 class="font-semibold text-brand">Hydrogen metrics</h3>
+      <p>Gravimetric capacity, adsorption energetics, site-resolved analysis, and framework accessibility.</p>
+    </div>
   </div>
 </section>
 
@@ -60,23 +78,23 @@ permalink: /
 </section>
 
 <section>
-  <h2 class="text-2xl font-semibold text-brand">Experience</h2>
+  <h2 class="text-2xl font-semibold text-brand">Skills snapshot</h2>
   <div class="grid gap-4 md:grid-cols-2">
     <div>
       <h3 class="font-semibold text-brand">Simulation</h3>
-      <p>LAMMPS, Materials Studio, GROMACS, NAMD</p>
+      <p>LAMMPS, DeePMD/DPGen, Quantum Espresso, VASP, Materials Studio, GROMACS, NAMD</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Analysis</h3>
       <p>MDAnalysis, OVITO, VMD, pandas, numpy, matplotlib</p>
     </div>
     <div>
-      <h3 class="font-semibold text-brand">Force fields & modelling</h3>
-      <p>ReaxFF, AIREBO, COMPASSII (Materials Studio)</p>
+      <h3 class="font-semibold text-brand">Force fields &amp; modelling</h3>
+      <p>AIREBO/AIREBO-M, ReaxFF, COMPASSII, adsorption and stress-strain workflows</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Others</h3>
-      <p>Conda, Docker, Jekyll, GitHub Pages, HPC (MPI/CUDA builds)</p>
+      <p>Linux/HPC, MPI/CUDA builds, Bash, Git, Jekyll, GitHub Pages</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Currently learning</h3>
