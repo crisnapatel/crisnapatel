@@ -121,10 +121,10 @@ extra_head: |
     <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
     <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
       <li>OS: Linux, macOS, Windows</li>
-      <li>Simulation software: LAMMPS, DeePMD/DPGen, Quantum Espresso, VASP, Materials Studio, GROMACS, NAMD</li>
+      <li>Simulation software: LAMMPS, DeePMD, Quantum Espresso, Materials Studio, GROMACS, NAMD</li>
       <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, NumPy, pandas, Matplotlib</li>
       <li>Programming: Python, Bash, C++</li>
-      <li>Linux/HPC environments, MPI/CUDA-oriented builds, and GPU workstation workflows</li>
+      <li>Linux/HPC environments, scheduler-based workflows, and GPU workstation workflows</li>
       </ul>
   </div>
 </section>

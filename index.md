@@ -17,8 +17,8 @@ permalink: /
       <a class="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/assets/cv.pdf' | relative_url }}">
         Download CV
       </a>
-      <a class="inline-flex items-center gap-2 rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10 focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/skills/' | relative_url }}">
-        Skills
+      <a class="inline-flex items-center gap-2 rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10 focus:outline-none focus-visible:ring focus-visible:ring-accent focus-visible:ring-offset-2" href="{{ '/cv/' | relative_url }}">
+        View CV
       </a>
     </div>
   </div>
@@ -60,7 +60,7 @@ permalink: /
     </div>
     <div>
       <h3 class="font-semibold text-brand">Simulation stack</h3>
-      <p>LAMMPS, AIREBO/AIREBO-M, DeePMD/DPGen, Quantum Espresso, VASP, and Python-based analysis.</p>
+      <p>LAMMPS, AIREBO/AIREBO-M, DeePMD, Quantum Espresso, and Python-based analysis.</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Hydrogen metrics</h3>
@@ -72,7 +72,9 @@ permalink: /
 <section>
   <h2 class="text-2xl font-semibold text-brand">Teaching & outreach</h2>
   <ul>
+    <li>Teaching Assistant, CHL7002: Computational Techniques for Chemical Engineers, IIT Delhi (2026; Jan-Apr).</li>
     <li>Teaching Assistant for CLL113 (Numerical Methods) at IIT Delhi (year 2023, 2024, 2025).</li>
+    <li>Institute Invigilator for JEE (Advanced) 2026, IIT Delhi (mock test: 16 May 2026; examination: 17 May 2026).</li>
     <li>Creator of the <a href="https://www.youtube.com/channel/UCLz7KTIBaCLX8iBMOHBMNVg" class="text-accent hover:underline">NanoscaleModeling</a> YouTube channel with tutorials on molecular dynamics fundamentals.</li>
   </ul>
 </section>
@@ -82,7 +84,7 @@ permalink: /
   <div class="grid gap-4 md:grid-cols-2">
     <div>
       <h3 class="font-semibold text-brand">Simulation</h3>
-      <p>LAMMPS, DeePMD/DPGen, Quantum Espresso, VASP, Materials Studio, GROMACS, NAMD</p>
+      <p>LAMMPS, DeePMD, Quantum Espresso, Materials Studio, GROMACS, NAMD</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Analysis</h3>
@@ -94,11 +96,11 @@ permalink: /
     </div>
     <div>
       <h3 class="font-semibold text-brand">Others</h3>
-      <p>Linux/HPC, MPI/CUDA builds, Bash, Git, Jekyll, GitHub Pages</p>
+      <p>Linux/HPC, Bash, Git</p>
     </div>
     <div>
       <h3 class="font-semibold text-brand">Currently learning</h3>
-      <p>Data structures and algorithms (DSA)</p>
+      <p>Statistical Learning, Density Functional Theories</p>
     </div>
   </div>
 </section>
