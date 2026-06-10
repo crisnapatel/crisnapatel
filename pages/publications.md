@@ -10,7 +10,7 @@ subtitle: "Papers, posters, talks, and selected conference materials."
 
 - **Krishna Patel**, Bhushan Dharmadhikari, Prabir Patra, and Jayati Sarkar\*, "Effect of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," *Journal of Molecular Modeling* **32**(3), 75 (2026), Springer. [DOI](https://doi.org/10.1007/s00894-026-06655-1) | [Shared-access link](https://rdcu.be/e4xyi)
 
-- **Krishna Patel**, Jayati Sarkar\*, "Role of junction topology and pillar configuration in hydrogen storage of graphene-CNT frameworks." (*Submitted*)
+- **Krishna Patel**, Jayati Sarkar\*, "Role of junction topology and pillar configuration in hydrogen storage of graphene-CNT frameworks." (*Under review, Diamond and Related Materials, Elsevier*)
 
 ## Conference Presentations
 
@@ -31,6 +31,163 @@ subtitle: "Papers, posters, talks, and selected conference materials."
 ## Conference Gallery
 
 <div class="not-prose">
+  <section class="mt-12">
+    <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h3 class="text-xl font-semibold text-brand">ISMC 2026 - BITS Goa</h3>
+        <p class="mt-1 text-sm text-slate-600">Poster session, invited talks, and group moments from the conference.</p>
+      </div>
+      <span class="text-sm font-semibold uppercase text-slate-500">12 photos</span>
+    </div>
+
+    <style>
+      .conference-rail-shell {
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background: #f8fafc;
+      }
+      .conference-rail {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-padding-inline: 1.25rem;
+        scroll-snap-type: x mandatory;
+        padding: 1.25rem 1.25rem 1.1rem;
+        scrollbar-color: #94a3b8 transparent;
+      }
+      .conference-rail::-webkit-scrollbar {
+        height: 0.65rem;
+      }
+      .conference-rail::-webkit-scrollbar-thumb {
+        background: #94a3b8;
+        border-radius: 999px;
+      }
+      .conference-slide {
+        flex: 0 0 auto;
+        width: min(78vw, 34rem);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgb(15 23 42 / 0.06);
+      }
+      .conference-slide.is-landscape {
+        width: min(78vw, 36rem);
+      }
+      .conference-slide.is-wide {
+        width: min(78vw, 38rem);
+      }
+      .conference-slide.is-portrait {
+        width: min(70vw, 20rem);
+      }
+      .conference-slide.is-phone {
+        width: min(70vw, 16rem);
+      }
+      .conference-slide img {
+        width: 100%;
+        height: clamp(17rem, 38vw, 28rem);
+        object-fit: contain;
+        object-position: center;
+        background: #f1f5f9;
+        display: block;
+      }
+      .conference-slide figcaption {
+        padding: 0.75rem 0.9rem;
+        font-size: 0.92rem;
+        line-height: 1.45;
+        color: #475569;
+        background: #f8fafc;
+      }
+      .conference-rail-note {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 0 1rem 0.95rem;
+        font-size: 0.82rem;
+        color: #64748b;
+      }
+      @media (max-width: 720px) {
+        .conference-rail {
+          scroll-padding-inline: 1rem;
+          padding-inline: 1rem;
+        }
+        .conference-slide img {
+          height: auto;
+          max-height: 24rem;
+        }
+      }
+    </style>
+
+    <div class="conference-rail-shell">
+      <div class="conference-rail" aria-label="ISMC 2026 photo rail">
+      <figure class="conference-slide is-phone">
+        <img src="{{ '/assets/conferences/ismc-2026/poster-discussion.jpg' | relative_url }}" alt="Krishna Patel presenting the ISMC 2026 poster to Prof. Guruswamy from IIT Bombay" loading="lazy" />
+        <figcaption>Presenting the ISMC 2026 poster to Prof. Guruswamy, IIT Bombay, during the Sustainability poster session.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-portrait">
+        <img src="{{ '/assets/conferences/ismc-2026/krishna-presenting-poster.jpg' | relative_url }}" alt="Krishna Patel standing beside the ISMC 2026 poster" loading="lazy" />
+        <figcaption>With the ISMC 2026 poster on hydrogen storage in carbon-based materials.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/poster-group-portrait.jpg' | relative_url }}" alt="Kirti Kumari, Swarnima, Ankita Choure, and Krishna Patel in front of the ISMC 2026 poster" loading="lazy" />
+        <figcaption>In front of the poster. Left to right: Kirti Kumari, Swarnima, Ankita Choure, and Krishna Patel.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/poster-session-walkthrough.jpg' | relative_url }}" alt="ISMC 2026 poster session walkthrough at BITS Goa" loading="lazy" />
+        <figcaption>Poster-session walkthrough at ISMC 2026, looking for interesting soft-matter and materials discussions.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/piyali-poster-discussion.jpg' | relative_url }}" alt="Krishna Patel attending Piyali Mukherjee's poster at ISMC 2026" loading="lazy" />
+        <figcaption>At Piyali Mukherjee's poster during the ISMC 2026 poster session.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/yusei-poster-discussion.jpg' | relative_url }}" alt="Yusei Kobayashi presenting a poster to Krishna Patel at ISMC 2026" loading="lazy" />
+        <figcaption>Yusei Kobayashi presenting his poster during the ISMC 2026 poster session.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/auditorium-group.jpg' | relative_url }}" alt="Auditorium selfie before Prof. Jayati Sarkar's ISMC 2026 talk with Swarnima, Krishna Patel, Jagat Singh, Mukul Kumar, Ankita Choure, and Kirti Kumari" loading="lazy" />
+        <figcaption>Auditorium selfie before Prof. Jayati Sarkar's ISMC talk: Prof. Sarkar, Swarnima, Krishna Patel, Jagat Singh, Mukul Kumar, Ankita Choure, and Kirti Kumari.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-wide">
+        <img src="{{ '/assets/conferences/ismc-2026/campus-group.jpg' | relative_url }}" alt="ISMC 2026 group photo at BITS Goa with Krishna Patel, Kirti Kumari, Swarnima, Prof. Jayati Sarkar, Ankita Choure, and Mukul Kumar" loading="lazy" />
+        <figcaption>ISMC 2026 group photo at BITS Goa. Left to right: Krishna Patel, Kirti Kumari, Swarnima, Prof. Jayati Sarkar, Ankita Choure, and Mukul Kumar.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-wide">
+        <img src="{{ '/assets/conferences/ismc-2026/ismc-venue-group.jpg' | relative_url }}" alt="ISMC 2026 participants outside the conference venue at BITS Goa" loading="lazy" />
+        <figcaption>Conference group photo outside the ISMC 2026 venue at BITS Pilani K K Birla Campus, Goa.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-portrait">
+        <img src="{{ '/assets/conferences/ismc-2026/viva-panjim-dinner.jpg' | relative_url }}" alt="Conference group dinner at Viva Panjim with Ankita Choure, Jagat Singh, Prof. Jayati Sarkar, Krishna Patel, Mukul Kumar, and Swarnima" loading="lazy" />
+        <figcaption>Dinner at Viva Panjim during the ISMC 2026 trip. Left to right: Ankita Choure, Jagat Singh, Prof. Jayati Sarkar, Krishna Patel, Mukul Kumar, and Swarnima.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-landscape">
+        <img src="{{ '/assets/conferences/ismc-2026/amy-shen-talk.jpg' | relative_url }}" alt="Amy Shen from OIST Japan giving a talk at ISMC 2026" loading="lazy" />
+        <figcaption>Attending Prof. Amy Shen's talk at ISMC 2026.</figcaption>
+      </figure>
+
+      <figure class="conference-slide is-wide">
+        <img src="{{ '/assets/conferences/ismc-2026/goa-beach-group.jpg' | relative_url }}" alt="Conference group at a Goa beach after ISMC 2026 with Mukul Kumar, Kirti Kumari, Prof. Jayati Sarkar, Swarnima, Ankita Choure, and Krishna Patel" loading="lazy" />
+        <figcaption>Goa evening after ISMC 2026. Left to right: Mukul Kumar, Kirti Kumari, Prof. Jayati Sarkar, Swarnima, Ankita Choure, and Krishna Patel.</figcaption>
+      </figure>
+      </div>
+      <div class="conference-rail-note">ISMC 2026, BITS Pilani K K Birla Campus, Goa.</div>
+    </div>
+  </section>
+
   <section class="mt-12">
     <h3 class="text-xl font-semibold text-brand mb-6">ICTN-KLC 2025 - IIT Delhi</h3>
     <div class="flex justify-center">
