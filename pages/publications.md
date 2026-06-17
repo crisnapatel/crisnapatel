@@ -14,7 +14,7 @@ subtitle: "Papers, posters, talks, and selected conference materials."
 
 ## Conference Presentations
 
-- **Krishna Patel** and J. Sarkar, "Hydrogen Storage in Carbon-Based Materials: From 2D Sheets to 3D Pillared Frameworks," poster presentation at *10th International Soft Matter Conference (ISMC 2026)*, BITS Pilani K K Birla Campus, Goa, India, 28 May 2026. Sustainability session, S-Poster-P008.
+- **Krishna Patel** and J. Sarkar, "Hydrogen Storage in Carbon-Based Materials: From 2D Sheets to 3D Pillared Frameworks," poster presentation at the *10th International Soft Matter Conference (ISMC 2026)*, BITS Pilani K K Birla Campus, Goa, India. Conference: 25-29 May 2026; poster presented on 28 May 2026. Sustainability session, S-Poster-P008. [Participation certificate (PDF)]({{ '/assets/conferences/ismc-2026/participation-certificate.pdf' | relative_url }})
 
 - **Krishna Patel** and J. Sarkar, "Impact of Graphene on the Conformation and Dynamics of Atactic Polystyrene in Toluene," poster presentation and flash talk at the *19th Annual International Conference on Complex Fluids and Soft Matter (CompFlu 2025)*, Indian Institute of Science, Bengaluru, India, 15-17 December 2025.
 
