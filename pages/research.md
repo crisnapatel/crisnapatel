@@ -14,30 +14,50 @@ My research uses atomistic simulation to connect local interactions, nanoscale m
 - Adsorption energetics, gravimetric capacity, volumetric capacity, and site-resolved H<sub>2</sub> uptake analysis
 - Event-driven molecular dynamics of binary hard-disk self-assembly
 
+<section class="not-prose mt-12">
+  <div class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Where I want to contribute next</p>
+    <h2 class="mt-2 text-2xl font-semibold text-brand">Research interests</h2>
+    <p class="mt-3 text-slate-600">
+      I would like to extend my background in molecular simulation, adsorption, and transport to
+      problems in water and energy. These are some of the directions I want to explore, but I am not
+      limiting myself to this list. I am also open to related problems where atomistic modelling could help.
+    </p>
+  </div>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-3">
+    <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent">Separations &amp; water</p>
+      <h3 class="mt-2 text-xl font-semibold text-brand">Membrane-based separation technology</h3>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        I want to use molecular simulation to study next-generation membranes for energy-efficient
+        separations and water treatment. Questions I am particularly interested in include coupled ion
+        and solvent transport, the thermodynamics of multicomponent and multi-ion solutions, selective
+        ion transport, and the ion&ndash;solvent and ion&ndash;membrane interactions that control permeability
+        and selectivity.
+      </p>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent">Energy materials</p>
+      <h3 class="mt-2 text-xl font-semibold text-brand">Energy conversion and storage</h3>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        I am interested in using simulation to connect atomic structure and interfacial chemistry with
+        adsorption, transport, and material performance. This builds on my current work on hydrogen storage.
+      </p>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent">Developing direction</p>
+      <h3 class="mt-2 text-xl font-semibold text-brand">Battery materials</h3>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        I want to study ion transport, solvation, and interfacial processes in battery materials, and
+        understand how they affect performance and stability.
+      </p>
+    </article>
+  </div>
+</section>
+
 ## Selected collaborations & support
 - Schrodinger Institute scholarship for *Molecular Modeling for Materials Science Applications: Organic Electronics* (Oct 2023).
 - Internal collaborations with the Soft Matter Lab, IIT Delhi.
-
-<section class="mt-12 grid gap-6 md:grid-cols-2">
-  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h3 class="text-xl font-semibold text-brand border-b pb-2">Research Skills</h3>
-    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
-      <li>Classical atomistic molecular dynamics</li>
-      <li>Reactive and empirical force fields: AIREBO/AIREBO-M, ReaxFF, COMPASS</li>
-      <li>Grand canonical Monte Carlo (fix gcmc) and adsorption workflows</li>
-      <li>Polymer chain metrics and transport: R<sub>g</sub>, end-to-end, MSD, diffusivity</li>
-      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics, local adsorption sites</li>
-      </ul>
-  </div>
-
-  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
-    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
-      <li>OS: Linux, macOS, Windows</li>
-      <li>Simulation software: LAMMPS, DeePMD, Quantum Espresso, Materials Studio, GROMACS, NAMD</li>
-      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, NumPy, pandas, Matplotlib</li>
-      <li>Programming: Python, Bash, C++; CLI-first Linux/HPC workflows</li>
-      <li>GPU/HPC environment experience and scheduler-based workflows</li>
-      </ul>
-  </div>
-</section>

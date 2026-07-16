@@ -105,29 +105,97 @@ extra_head: |
     </ol>
   </section>
 
-<section class="mt-12 grid gap-6 md:grid-cols-2">
-  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h3 class="text-xl font-semibold text-brand border-b pb-2">Research Skills</h3>
-    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
-      <li>Classical atomistic molecular dynamics</li>
-      <li>Reactive and empirical force fields: AIREBO/AIREBO-M, ReaxFF, COMPASS</li>
-      <li>Grand canonical Monte Carlo (fix gcmc) and adsorption workflows</li>
-      <li>Polymer chain metrics and transport: R<sub>g</sub>, end-to-end, MSD, diffusivity</li>
-      <li>Hydrogen storage analysis: binding-energy distributions, gravimetric/volumetric metrics, site-resolved uptake</li>
-      </ul>
-  </div>
+  <section>
+    <h2 class="text-2xl font-semibold text-brand">Research papers and selected conferences</h2>
+    <p class="mt-2 max-w-3xl text-slate-600">
+      Published work, ongoing manuscripts, and a selection of conference presentations.
+    </p>
 
-  <div class="space-y-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h3 class="text-xl font-semibold text-brand border-b pb-2">Technical Skills</h3>
-    <ul class="mt-3 list-disc list-inside space-y-2 text-sm text-slate-700">
-      <li>OS: Linux, macOS, Windows</li>
-      <li>Simulation software: LAMMPS, DeePMD, Quantum Espresso, Materials Studio, GROMACS, NAMD</li>
-      <li>Visualization &amp; analysis: OVITO, VMD, MDAnalysis, NumPy, pandas, Matplotlib</li>
-      <li>Programming: Python, Bash, C++</li>
-      <li>Linux/HPC environments, scheduler-based workflows, and GPU workstation workflows</li>
-      </ul>
-  </div>
-</section>
+    <div class="mt-6 space-y-10">
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-accent">Research papers</h3>
+        <ol class="mt-5 space-y-6">
+          <li class="border-l-2 border-slate-200 pl-4">
+            <p class="text-sm leading-relaxed text-slate-700">
+              <strong class="text-brand">Krishna Patel</strong>, Bhushan Dharmadhikari, Prabir Patra,
+              and Jayati Sarkar, &ldquo;Effect of Graphene on the Conformation and Dynamics of Atactic
+              Polystyrene in Toluene,&rdquo; <em>Journal of Molecular Modeling</em> <strong>32</strong>, 75 (2026).
+            </p>
+            <p class="mt-2 text-sm">
+              <a class="font-medium text-accent hover:underline" href="https://doi.org/10.1007/s00894-026-06655-1">DOI</a>
+              <span class="text-slate-400">&middot;</span>
+              <a class="font-medium text-accent hover:underline" href="https://rdcu.be/e4xyi">Shared-access link</a>
+            </p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <p class="text-sm leading-relaxed text-slate-700">
+              <strong class="text-brand">Krishna Patel</strong> and Jayati Sarkar, &ldquo;Role of Junction
+              Topology and Pillar Configuration in Hydrogen Storage of Graphene&ndash;CNT Frameworks.&rdquo;
+            </p>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-accent">Under review &middot; Diamond and Related Materials</p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <p class="text-sm leading-relaxed text-slate-700">
+              <strong class="text-brand">Krishna Patel</strong> and Jayati Sarkar, &ldquo;Deep-Learning
+              Interatomic Potential for Hydrogen Storage in Psi-Graphene Decorated with Lithium.&rdquo;
+            </p>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-accent">Manuscript in preparation</p>
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-accent">Selected conferences &amp; presentations</h3>
+        <ul class="mt-5 space-y-6">
+          <li class="border-l-2 border-slate-200 pl-4">
+            <h4 class="font-semibold text-brand">
+              <a class="hover:text-accent hover:underline" href="https://summer2026.ccp5.ac.uk/about/">CCP5 Summer School 2026</a>
+            </h4>
+            <p class="mt-1 text-sm text-slate-600">Newcastle University, United Kingdom &middot; 19&ndash;30 Jul 2026</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Presenting a poster on hydrogen storage in graphene&ndash;CNT frameworks.</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+              The programme combines programming, molecular-simulation theory, and extensive computational
+              practicals. I will take the advanced course in machine learning for interatomic potentials.
+            </p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <h4 class="font-semibold text-brand">10th International Soft Matter Conference</h4>
+            <p class="mt-1 text-sm text-slate-600">BITS Goa &middot; May 2026</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Poster: Hydrogen Storage in Carbon-Based Materials: From 2D Sheets to 3D Pillared Frameworks.</p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <h4 class="font-semibold text-brand">CompFlu 2025</h4>
+            <p class="mt-1 text-sm text-slate-600">Indian Institute of Science, Bengaluru &middot; Dec 2025</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Poster and flash talk on atactic-polystyrene dynamics near graphene.</p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <h4 class="font-semibold text-brand">ICTN-KLC 2025</h4>
+            <p class="mt-1 text-sm text-slate-600">IIT Delhi &middot; Dec 2025</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Poster: Molecular Dynamics Simulations of Carbonaceous Materials.</p>
+          </li>
+
+          <li class="border-l-2 border-slate-200 pl-4">
+            <h4 class="font-semibold text-brand">ChemRD2 Symposium 2025</h4>
+            <p class="mt-1 text-sm text-slate-600">IIT Delhi &middot; Nov 2025</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Poster: Simulation-based Study of Hydrogen Production and Storage.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-6 text-sm">
+      <a class="font-semibold text-accent hover:underline" href="{{ '/publications/' | relative_url }}">View the full publications and presentations record &rarr;</a>
+    </p>
+  </section>
+
+{% include teaching-supervision.html %}
+
+{% include capabilities.html %}
 
 
 </div>
