@@ -82,7 +82,14 @@ extra_head: |
     <h2 class="text-2xl font-semibold text-brand">Selected Research Experience</h2>
     <ol class="mt-6 space-y-6">
       <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
-        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2025 – Present</div>
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">Feb 2026 – Present</div>
+        <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-brand">Machine-Learned Interatomic Potential for Lithium-Decorated Psi-Graphene</h3>
+          <p class="text-sm text-slate-600">Developing and validating a DeePMD-based MLIP for hydrogen storage in lithium-decorated psi-graphene, using Quantum ESPRESSO calculations as reference data.</p>
+        </div>
+      </li>
+      <li class="grid gap-4 md:grid-cols-[minmax(0,160px)_1fr] md:items-start">
+        <div class="rounded-2xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-700">2025 – 2026</div>
         <div class="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 class="text-xl font-semibold text-brand">Hydrogen Storage in Graphene and Graphene-CNT Frameworks</h3>
           <p class="text-sm text-slate-600">Design and analysis of carbon-based architectures for hydrogen storage using atomistic simulation workflows in LAMMPS, with emphasis on junction topology, pillar density, and accessible interlayer volume.</p>
