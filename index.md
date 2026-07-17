@@ -118,3 +118,70 @@ permalink: /
     <li>Creator of the <a href="https://www.youtube.com/channel/UCLz7KTIBaCLX8iBMOHBMNVg" class="text-accent hover:underline">NanoscaleModeling</a> YouTube channel with tutorials on molecular dynamics fundamentals.</li>
   </ul>
 </section>
+
+<section class="not-prose">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h2 class="text-2xl font-semibold text-brand">Featured tutorials</h2>
+      <p class="mt-2 max-w-3xl text-slate-600">
+        A practical introduction to the command line, molecular dynamics, LAMMPS, and OVITO.
+      </p>
+    </div>
+    <a class="text-sm font-semibold text-accent hover:underline" href="https://www.youtube.com/@NanoscaleModeling" rel="noopener">
+      View the NanoscaleModeling channel
+    </a>
+  </div>
+
+  <div class="mt-6 grid gap-8 lg:grid-cols-3">
+    <article>
+      <div class="aspect-video overflow-hidden rounded-xl bg-slate-100 shadow-sm">
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube-nocookie.com/embed/RDqZj-DnAfI"
+          title="Linux Command Line Basics for Molecular Dynamics"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-widest text-accent">Session 1</p>
+      <h3 class="mt-1 text-lg font-semibold text-brand">Linux command line basics for molecular dynamics</h3>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        Files, paths, permissions, Bash, SSH, and the commands used in molecular-simulation and HPC work.
+      </p>
+    </article>
+
+    <article>
+      <div class="aspect-video overflow-hidden rounded-xl bg-slate-100 shadow-sm">
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube-nocookie.com/embed/KTnfby1iwxw"
+          title="From Brownian Motion to a First Argon LAMMPS Simulation"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-widest text-accent">Session 2</p>
+      <h3 class="mt-1 text-lg font-semibold text-brand">From Brownian motion to a first argon simulation</h3>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        A small Python model, XYZ trajectories, OVITO, and the first steps in running an argon system in LAMMPS.
+      </p>
+    </article>
+
+    <article>
+      <div class="aspect-video overflow-hidden rounded-xl bg-slate-100 shadow-sm">
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube-nocookie.com/embed/vEGduPf0NF8"
+          title="Modeling a Harmonic Bond in LAMMPS"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-widest text-accent">Session 3</p>
+      <h3 class="mt-1 text-lg font-semibold text-brand">Modelling a harmonic bond in LAMMPS</h3>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        Force fields, molecular data files, a harmonic bond model, NVE dynamics, and trajectory inspection in OVITO.
+      </p>
+    </article>
+  </div>
+</section>
