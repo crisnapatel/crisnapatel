@@ -51,8 +51,11 @@ My research uses atomistic simulation to connect local interactions, nanoscale m
       <p class="text-xs font-semibold uppercase tracking-widest text-accent">Developing direction</p>
       <h3 class="mt-2 text-xl font-semibold text-brand">Battery materials</h3>
       <p class="mt-3 text-sm leading-relaxed text-slate-700">
-        I want to study ion transport, solvation, and interfacial processes in battery materials, and
-        understand how they affect performance and stability.
+        I am interested in the molecular mechanisms that govern ion transport in battery materials,
+        including solvation and desolvation, defect-mediated diffusion, and transport across
+        electrode&ndash;electrolyte interfaces. I would like to use atomistic simulation and electronic-structure
+        calculations to connect local structure and interfacial chemistry with ionic conductivity,
+        phase stability, and electrochemical performance.
       </p>
     </article>
   </div>

@@ -161,10 +161,10 @@ extra_head: |
               <a class="hover:text-accent hover:underline" href="https://summer2026.ccp5.ac.uk/about/">CCP5 Summer School 2026</a>
             </h4>
             <p class="mt-1 text-sm text-slate-600">Newcastle University, United Kingdom &middot; 19&ndash;30 Jul 2026</p>
-            <p class="mt-2 text-sm leading-relaxed text-slate-700">Presenting a poster on hydrogen storage in graphene&ndash;CNT frameworks.</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-700">Presented a poster on hydrogen storage in graphene&ndash;CNT frameworks.</p>
             <p class="mt-2 text-sm leading-relaxed text-slate-700">
-              The programme combines programming, molecular-simulation theory, and extensive computational
-              practicals. I will take the advanced course in machine learning for interatomic potentials.
+              Completed the two-week programme in programming, molecular-simulation theory, and computational
+              practicals, including the advanced course in machine learning for interatomic potentials.
             </p>
           </li>
 

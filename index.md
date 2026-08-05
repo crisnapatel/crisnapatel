@@ -114,6 +114,7 @@ permalink: /
 <section>
   <h2 class="text-2xl font-semibold text-brand">Academic service &amp; outreach</h2>
   <ul>
+    <li>Teaching Assistant for CHL2001: Numerical Methods for Chemical Engineers, IIT Delhi (Jul&ndash;Nov 2026; instructor: Prof. Jayati Sarkar).</li>
     <li>Teaching Assistant for CLL113: Numerical Methods, IIT Delhi (Jul&ndash;Dec, 2023&ndash;2025).</li>
     <li>Teaching Assistant for CHL7002: Computational Techniques for Chemical Engineers, IIT Delhi (Jan&ndash;Apr 2026).</li>
     <li>Institute Invigilator for JEE (Advanced) 2026, IIT Delhi (mock test: 16 May 2026; examination: 17 May 2026).</li>

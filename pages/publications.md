@@ -24,7 +24,7 @@ subtitle: "Papers, posters, talks, and selected conference materials."
 
 - **Krishna Patel** and J. Sarkar, poster on polystyrene dimensions and diffusivity, *Soft Matter Meet 2024*, Shiv Nadar University, Delhi NCR.
 
-- **Krishna Patel**, poster presentation at the [CCP5 Summer School 2026](https://summer2026.ccp5.ac.uk/about/), Newcastle University, United Kingdom, 19-30 July 2026, on hydrogen storage in graphene-CNT frameworks. Selected advanced course: Machine Learning for Interatomic Potentials.
+- **Krishna Patel**, "Hydrogen Storage in Pillared Graphene-CNT Frameworks: Junction Topology versus Interlayer Accessibility," poster presented at the [CCP5 Summer School 2026](https://summer2026.ccp5.ac.uk/about/), Newcastle University, United Kingdom, 19-30 July 2026. Completed the advanced course in Machine Learning for Interatomic Potentials.
 
 ---
 
@@ -186,6 +186,17 @@ subtitle: "Papers, posters, talks, and selected conference materials."
       </div>
       <div class="conference-rail-note">ISMC 2026, BITS Pilani K K Birla Campus, Goa.</div>
     </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="mb-5">
+      <h3 class="text-xl font-semibold text-brand">CCP5 Summer School 2026 - Newcastle University</h3>
+      <p class="mt-1 text-sm text-slate-600">Two weeks of molecular-simulation theory, computational practicals, and scientific exchange.</p>
+    </div>
+    <figure class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+      <img src="{{ '/assets/conferences/ccp5-2026/summer-school-group.jpg' | relative_url }}" alt="Participants and instructors at CCP5 Summer School 2026 outside Newcastle University" class="h-auto w-full" loading="lazy" />
+      <figcaption class="bg-slate-50 px-4 py-3 text-sm text-slate-600">Participants and instructors at CCP5 Summer School 2026, Newcastle University.</figcaption>
+    </figure>
   </section>
 
   <section class="mt-12">
